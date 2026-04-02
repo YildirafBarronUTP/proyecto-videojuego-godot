@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bq0de2hep0qa7"]
+
+[ext_resource type="Script" uid="uid://et3jig5ygs2m" path="res://scripts/menu_principal.gd" id="1_tu06j"]
+
+[node name="MenuPrincipal" type="Control" unique_id=599557749]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tu06j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1073354360]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1659441444]
+layout_mode = 2
+text = "Solo un jugador"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=538129165]
+layout_mode = 2
+text = "Multijugador"
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=1669201996]
+layout_mode = 2
+text = "Tutorial"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
