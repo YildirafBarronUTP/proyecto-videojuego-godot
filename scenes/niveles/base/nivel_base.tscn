@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cpb8q6rdwgqbc"]
+
+[ext_resource type="Script" uid="uid://c6bqyqsq8mn4x" path="res://scripts/nivel_base.gd" id="1_648r7"]
+
+[node name="NivelBase" type="Node2D" unique_id=933823112]
+script = ExtResource("1_648r7")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=500627136]
+zoom = Vector2(0.4, 0.4)
+
+[node name="CapaUI" type="CanvasLayer" parent="." unique_id=897512126]
