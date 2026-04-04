@@ -6,6 +6,7 @@
 size = Vector2(128, 128)
 
 [node name="Muro" type="StaticBody2D" unique_id=2010616474]
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=864453707]
 texture = ExtResource("1_cso2g")

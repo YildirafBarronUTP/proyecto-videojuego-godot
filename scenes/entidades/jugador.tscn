@@ -1,16 +1,21 @@
 [gd_scene format=3 uid="uid://dp33oq5rjfafs"]
 
-[ext_resource type="Texture2D" uid="uid://b5okb75s645sf" path="res://assets/player.png" id="1_63aa8"]
 [ext_resource type="Script" uid="uid://v6molrajqse4" path="res://scripts/jugador.gd" id="1_pesnq"]
+[ext_resource type="PackedScene" uid="uid://ioajrmpchrdl" path="res://scenes/entidades/bomba.tscn" id="2_jmfal"]
+[ext_resource type="Texture2D" uid="uid://bib5etuwo3u8b" path="res://assets/blue-s.png" id="3_jmfal"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pesnq"]
 size = Vector2(110, 110)
 
 [node name="Jugador" type="CharacterBody2D" unique_id=884006860]
+collision_layer = 2
+collision_mask = 5
+motion_mode = 1
 script = ExtResource("1_pesnq")
+escena_bomba = ExtResource("2_jmfal")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1070796623]
-texture = ExtResource("1_63aa8")
+texture = ExtResource("3_jmfal")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1781811736]
 shape = SubResource("RectangleShape2D_pesnq")
