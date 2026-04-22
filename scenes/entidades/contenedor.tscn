@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://chy3tjholx73r"]
+
+[ext_resource type="Texture2D" uid="uid://bsj0w6w8lfu22" path="res://assets/contenedor.png" id="1_a76c4"]
+[ext_resource type="Script" uid="uid://hgjlvcjgexnu" path="res://scripts/contenedor.gd" id="1_vafj4"]
+[ext_resource type="PackedScene" uid="uid://dgrn1gm6o2uxd" path="res://scenes/entidades/bonificacion_rango.tscn" id="2_vmu2o"]
+[ext_resource type="PackedScene" uid="uid://c7v4hqi46jlv3" path="res://scenes/entidades/bonificacion_velocidad.tscn" id="3_xubdh"]
+[ext_resource type="PackedScene" uid="uid://bawpj7ylhlebx" path="res://scenes/entidades/bonificacion_cargas.tscn" id="4_6wpiu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paepi"]
+size = Vector2(128, 128)
+
+[node name="Contenedor" type="StaticBody2D" unique_id=824751243]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_vafj4")
+escena_rango = ExtResource("2_vmu2o")
+escena_velocidad = ExtResource("3_xubdh")
+escena_cargas = ExtResource("4_6wpiu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1384969945]
+texture = ExtResource("1_a76c4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=752768977]
+shape = SubResource("RectangleShape2D_paepi")

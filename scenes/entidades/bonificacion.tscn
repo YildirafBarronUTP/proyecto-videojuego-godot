@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dxp5q4ky65b0y"]
+
+[ext_resource type="Script" uid="uid://cnsbppcd7qhxs" path="res://scripts/bonificacion.gd" id="1_i7luy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhm3q"]
+size = Vector2(64, 64)
+
+[node name="Bonificacion" type="Area2D" unique_id=706740754]
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("1_i7luy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=674625972]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=81356606]
+shape = SubResource("RectangleShape2D_nhm3q")

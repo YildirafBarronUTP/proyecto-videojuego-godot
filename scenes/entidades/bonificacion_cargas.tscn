@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bawpj7ylhlebx"]
+
+[ext_resource type="PackedScene" uid="uid://dxp5q4ky65b0y" path="res://scenes/entidades/bonificacion.tscn" id="1_boqot"]
+[ext_resource type="Texture2D" uid="uid://o044lonkmgpp" path="res://assets/bono_cargas.png" id="2_8xlse"]
+
+[node name="BonificacionCargas" unique_id=706740754 instance=ExtResource("1_boqot")]
+tipo_bonificacion = "cargas"
+
+[node name="Sprite2D" parent="." index="0" unique_id=674625972]
+texture = ExtResource("2_8xlse")

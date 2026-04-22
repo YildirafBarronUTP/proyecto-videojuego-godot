@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://pxsqog84m8vp"]
+
+[ext_resource type="Script" uid="uid://dawa44v1xj4gw" path="res://scripts/objeto_indestructible_base.gd" id="1_jkms0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23svf"]
+size = Vector2(128, 128)
+
+[node name="ObjetoIndestructibleBase" type="StaticBody2D" unique_id=2019699787]
+collision_mask = 0
+script = ExtResource("1_jkms0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1924481150]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1463965448]
+shape = SubResource("RectangleShape2D_23svf")

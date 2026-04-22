@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ioajrmpchrdl"]
+
+[ext_resource type="Script" uid="uid://cgvlu0ultpmky" path="res://scripts/bomba.gd" id="1_um6la"]
+[ext_resource type="PackedScene" uid="uid://crnqcadbbw4a2" path="res://scenes/entidades/fuego.tscn" id="2_u5ksy"]
+[ext_resource type="Texture2D" uid="uid://crvdjmmocswmc" path="res://assets/carga.png" id="2_um6la"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_um6la"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w11xl"]
+size = Vector2(130, 130)
+
+[node name="Carga" type="StaticBody2D" unique_id=898758405]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_um6la")
+escena_fuego = ExtResource("2_u5ksy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1618351010]
+texture = ExtResource("2_um6la")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2131696368]
+shape = SubResource("RectangleShape2D_um6la")
+
+[node name="Timer" type="Timer" parent="." unique_id=1698528676]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="AreaDeteccion" type="Area2D" parent="." unique_id=1448026111]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeteccion" unique_id=1739957319]
+shape = SubResource("RectangleShape2D_w11xl")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dgrn1gm6o2uxd"]
+
+[ext_resource type="PackedScene" uid="uid://dxp5q4ky65b0y" path="res://scenes/entidades/bonificacion.tscn" id="1_ve7i0"]
+[ext_resource type="Texture2D" uid="uid://c7ytsf1vsffbs" path="res://assets/bono_rango.png" id="2_cde2u"]
+
+[node name="BonificacionRango" unique_id=706740754 instance=ExtResource("1_ve7i0")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=674625972]
+texture = ExtResource("2_cde2u")

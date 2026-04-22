@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bq0de2hep0qa7"]
 
 [ext_resource type="Script" uid="uid://et3jig5ygs2m" path="res://scripts/menu_principal.gd" id="1_tu06j"]
+[ext_resource type="Texture2D" uid="uid://ba6f1ncokuo0o" path="res://assets/ui/fondo_menu.png" id="2_fh6ra"]
+[ext_resource type="AudioStream" uid="uid://c447on0rr7bl4" path="res://sounds/soundtrack/Menu_principal/Jerry Five.mp3" id="2_guvrm"]
 
 [node name="MenuPrincipal" type="Control" unique_id=599557749]
 layout_mode = 3
@@ -10,6 +12,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tu06j")
+
+[node name="CapaFondo" type="CanvasLayer" parent="." unique_id=1911855114]
+layer = -10
+
+[node name="ImagenFondo" type="TextureRect" parent="CapaFondo" unique_id=920990599]
+modulate = Color(0.46229059, 0.46229059, 0.46229059, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_fh6ra")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1073354360]
 layout_mode = 1
@@ -27,15 +44,22 @@ grow_vertical = 2
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=1659441444]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Solo un jugador"
 
 [node name="Button2" type="Button" parent="VBoxContainer" unique_id=538129165]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Multijugador"
 
 [node name="Button3" type="Button" parent="VBoxContainer" unique_id=1669201996]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Tutorial"
+
+[node name="MusicaMenu" type="AudioStreamPlayer" parent="." unique_id=1843461211]
+stream = ExtResource("2_guvrm")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

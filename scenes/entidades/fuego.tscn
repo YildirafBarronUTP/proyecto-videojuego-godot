@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://crnqcadbbw4a2"]
+
+[ext_resource type="Script" uid="uid://brg1s8n0e0wgu" path="res://scripts/fuego.gd" id="1_78wkc"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pgspb"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0l6ly"]
+size = Vector2(90, 90)
+
+[node name="Fuego" type="Area2D" unique_id=242590720]
+collision_layer = 16
+collision_mask = 12
+script = ExtResource("1_78wkc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1815649558]
+modulate = Color(0.94509804, 1, 0.019607844, 0.4627451)
+texture = SubResource("PlaceholderTexture2D_pgspb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1285357320]
+shape = SubResource("RectangleShape2D_0l6ly")
+
+[node name="Timer" type="Timer" parent="." unique_id=1925794639]

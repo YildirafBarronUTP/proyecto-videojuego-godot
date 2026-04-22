@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c7v4hqi46jlv3"]
+
+[ext_resource type="PackedScene" uid="uid://dxp5q4ky65b0y" path="res://scenes/entidades/bonificacion.tscn" id="1_m3n7d"]
+[ext_resource type="Texture2D" uid="uid://bg51f8hxv373c" path="res://assets/bono_velocidad.png" id="2_50aye"]
+
+[node name="BonificacionVelocidad" unique_id=706740754 instance=ExtResource("1_m3n7d")]
+tipo_bonificacion = "velocidad"
+valor_bonificacion = 150.0
+
+[node name="Sprite2D" parent="." index="0" unique_id=674625972]
+texture = ExtResource("2_50aye")

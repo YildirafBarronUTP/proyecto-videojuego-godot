@@ -1,485 +1,62 @@
 [gd_scene format=3 uid="uid://cy4suc3onf5vl"]
 
-[ext_resource type="PackedScene" uid="uid://cpb8q6rdwgqbc" path="res://scenes/niveles/base/nivel_base.tscn" id="1_2r3by"]
-[ext_resource type="PackedScene" uid="uid://dmr8fedr8ocj5" path="res://scenes/entidades/muro.tscn" id="1_6splh"]
-[ext_resource type="PackedScene" uid="uid://chy3tjholx73r" path="res://scenes/entidades/caja.tscn" id="2_2r3by"]
+[ext_resource type="PackedScene" uid="uid://csgs3s2ttjlxi" path="res://scenes/niveles/base/nivel_multi_base.tscn" id="1_2r3by"]
+[ext_resource type="PackedScene" uid="uid://c8i4qnmskycri" path="res://scenes/niveles/multijugador/mapa_procedural.tscn" id="2_vhdj0"]
 [ext_resource type="PackedScene" uid="uid://dp33oq5rjfafs" path="res://scenes/entidades/jugador.tscn" id="3_gl3mm"]
 [ext_resource type="Texture2D" uid="uid://cin4k55rc8ov1" path="res://assets/red-s.png" id="5_gl3mm"]
+[ext_resource type="Texture2D" uid="uid://p5mtebb1pvmh" path="res://assets/red_charge.png" id="6_lgkjn"]
+[ext_resource type="Texture2D" uid="uid://6wt63oun24ob" path="res://assets/green-s.png" id="7_sw7sj"]
+[ext_resource type="Texture2D" uid="uid://ud21mf7oo3m1" path="res://assets/purple-s.png" id="8_vhdj0"]
+[ext_resource type="Texture2D" uid="uid://cy1ebig5oqqq2" path="res://assets/green_charge.png" id="9_cs056"]
+[ext_resource type="Texture2D" uid="uid://cud4fmtn7r2gv" path="res://assets/purple_charge.png" id="11_6vpah"]
 
 [node name="NivelMulti" unique_id=933823112 instance=ExtResource("1_2r3by")]
 
-[node name="Camera2D" parent="." index="0" unique_id=500627136]
-position = Vector2(-1, -62)
+[node name="MapaProcedural" parent="." index="0" unique_id=1964763230 instance=ExtResource("2_vhdj0")]
 
-[node name="Muro" parent="." index="2" unique_id=2010616474 instance=ExtResource("1_6splh")]
-position = Vector2(-576, -832)
+[node name="Camera2D" parent="." index="1" unique_id=500627136]
+position = Vector2(0, 64)
 
-[node name="Muro2" parent="." index="3" unique_id=163599377 instance=ExtResource("1_6splh")]
-position = Vector2(-448, -832)
-
-[node name="Muro3" parent="." index="4" unique_id=1461243422 instance=ExtResource("1_6splh")]
-position = Vector2(-320, -832)
-
-[node name="Muro4" parent="." index="5" unique_id=766195280 instance=ExtResource("1_6splh")]
-position = Vector2(-192, -832)
-
-[node name="Muro5" parent="." index="6" unique_id=69561154 instance=ExtResource("1_6splh")]
-position = Vector2(-64, -832)
-
-[node name="Muro6" parent="." index="7" unique_id=779890238 instance=ExtResource("1_6splh")]
-position = Vector2(64, -832)
-
-[node name="Muro7" parent="." index="8" unique_id=901405538 instance=ExtResource("1_6splh")]
-position = Vector2(192, -832)
-
-[node name="Muro8" parent="." index="9" unique_id=775121830 instance=ExtResource("1_6splh")]
-position = Vector2(320, -832)
-
-[node name="Muro9" parent="." index="10" unique_id=1486657842 instance=ExtResource("1_6splh")]
-position = Vector2(448, -832)
-
-[node name="Muro10" parent="." index="11" unique_id=1006823982 instance=ExtResource("1_6splh")]
-position = Vector2(576, -832)
-
-[node name="Muro11" parent="." index="12" unique_id=1359402538 instance=ExtResource("1_6splh")]
-position = Vector2(704, -832)
-
-[node name="Muro12" parent="." index="13" unique_id=1652697660 instance=ExtResource("1_6splh")]
-position = Vector2(832, -832)
-
-[node name="Muro13" parent="." index="14" unique_id=1445056630 instance=ExtResource("1_6splh")]
-position = Vector2(960, -832)
-
-[node name="Muro14" parent="." index="15" unique_id=1253262094 instance=ExtResource("1_6splh")]
-position = Vector2(1088, -832)
-
-[node name="Muro15" parent="." index="16" unique_id=820557148 instance=ExtResource("1_6splh")]
-position = Vector2(1216, -832)
-
-[node name="Muro16" parent="." index="17" unique_id=640346533 instance=ExtResource("1_6splh")]
-position = Vector2(1216, -704)
-
-[node name="Muro17" parent="." index="18" unique_id=295529590 instance=ExtResource("1_6splh")]
-position = Vector2(1216, -576)
-
-[node name="Muro18" parent="." index="19" unique_id=2132586491 instance=ExtResource("1_6splh")]
-position = Vector2(1216, -448)
-
-[node name="Muro19" parent="." index="20" unique_id=1512190074 instance=ExtResource("1_6splh")]
-position = Vector2(1216, -320)
-
-[node name="Muro20" parent="." index="21" unique_id=1676764401 instance=ExtResource("1_6splh")]
-position = Vector2(1216, -192)
-
-[node name="Muro21" parent="." index="22" unique_id=2039578054 instance=ExtResource("1_6splh")]
-position = Vector2(1216, -64)
-
-[node name="Muro22" parent="." index="23" unique_id=932629086 instance=ExtResource("1_6splh")]
-position = Vector2(1216, 64)
-
-[node name="Muro23" parent="." index="24" unique_id=902956033 instance=ExtResource("1_6splh")]
-position = Vector2(1216, 192)
-
-[node name="Muro24" parent="." index="25" unique_id=1620165019 instance=ExtResource("1_6splh")]
-position = Vector2(1216, 320)
-
-[node name="Muro25" parent="." index="26" unique_id=2006238967 instance=ExtResource("1_6splh")]
-position = Vector2(1216, 448)
-
-[node name="Muro26" parent="." index="27" unique_id=258723177 instance=ExtResource("1_6splh")]
-position = Vector2(1216, 576)
-
-[node name="Muro27" parent="." index="28" unique_id=1090209708 instance=ExtResource("1_6splh")]
-position = Vector2(1216, 704)
-
-[node name="Muro28" parent="." index="29" unique_id=1375019122 instance=ExtResource("1_6splh")]
-position = Vector2(1088, 704)
-
-[node name="Muro29" parent="." index="30" unique_id=1500607380 instance=ExtResource("1_6splh")]
-position = Vector2(960, 704)
-
-[node name="Muro30" parent="." index="31" unique_id=392240554 instance=ExtResource("1_6splh")]
-position = Vector2(832, 704)
-
-[node name="Muro31" parent="." index="32" unique_id=343468299 instance=ExtResource("1_6splh")]
-position = Vector2(704, 704)
-
-[node name="Muro32" parent="." index="33" unique_id=1717918809 instance=ExtResource("1_6splh")]
-position = Vector2(576, 704)
-
-[node name="Muro33" parent="." index="34" unique_id=1908198665 instance=ExtResource("1_6splh")]
-position = Vector2(448, 704)
-
-[node name="Muro34" parent="." index="35" unique_id=1140353301 instance=ExtResource("1_6splh")]
-position = Vector2(320, 704)
-
-[node name="Muro35" parent="." index="36" unique_id=1513798264 instance=ExtResource("1_6splh")]
-position = Vector2(192, 704)
-
-[node name="Muro36" parent="." index="37" unique_id=68559230 instance=ExtResource("1_6splh")]
-position = Vector2(64, 704)
-
-[node name="Muro37" parent="." index="38" unique_id=1979922278 instance=ExtResource("1_6splh")]
-position = Vector2(-64, 704)
-
-[node name="Muro38" parent="." index="39" unique_id=1680511478 instance=ExtResource("1_6splh")]
-position = Vector2(-192, 704)
-
-[node name="Muro39" parent="." index="40" unique_id=1827131612 instance=ExtResource("1_6splh")]
-position = Vector2(-320, 704)
-
-[node name="Muro40" parent="." index="41" unique_id=604308931 instance=ExtResource("1_6splh")]
-position = Vector2(-448, 704)
-
-[node name="Muro41" parent="." index="42" unique_id=2112387250 instance=ExtResource("1_6splh")]
-position = Vector2(-576, 704)
-
-[node name="Muro42" parent="." index="43" unique_id=1381006798 instance=ExtResource("1_6splh")]
-position = Vector2(-576, 576)
-
-[node name="Muro43" parent="." index="44" unique_id=1832128983 instance=ExtResource("1_6splh")]
-position = Vector2(-576, 448)
-
-[node name="Muro44" parent="." index="45" unique_id=623928290 instance=ExtResource("1_6splh")]
-position = Vector2(-576, 320)
-
-[node name="Muro45" parent="." index="46" unique_id=1892128747 instance=ExtResource("1_6splh")]
-position = Vector2(-576, 192)
-
-[node name="Muro46" parent="." index="47" unique_id=1704704779 instance=ExtResource("1_6splh")]
-position = Vector2(-576, 64)
-
-[node name="Muro47" parent="." index="48" unique_id=522328777 instance=ExtResource("1_6splh")]
-position = Vector2(-576, -64)
-
-[node name="Muro48" parent="." index="49" unique_id=617083763 instance=ExtResource("1_6splh")]
-position = Vector2(-576, -192)
-
-[node name="Muro49" parent="." index="50" unique_id=812486155 instance=ExtResource("1_6splh")]
-position = Vector2(-576, -320)
-
-[node name="Muro50" parent="." index="51" unique_id=461457035 instance=ExtResource("1_6splh")]
-position = Vector2(-576, -448)
-
-[node name="Muro51" parent="." index="52" unique_id=922877339 instance=ExtResource("1_6splh")]
-position = Vector2(-576, -576)
-
-[node name="Muro52" parent="." index="53" unique_id=10076325 instance=ExtResource("1_6splh")]
-position = Vector2(-576, -704)
-
-[node name="Muro53" parent="." index="54" unique_id=367869936 instance=ExtResource("1_6splh")]
+[node name="Jugador" parent="." index="3" unique_id=884006860 instance=ExtResource("3_gl3mm")]
 position = Vector2(-320, -576)
 
-[node name="Muro54" parent="." index="55" unique_id=1927495635 instance=ExtResource("1_6splh")]
-position = Vector2(-64, -576)
-
-[node name="Muro55" parent="." index="56" unique_id=193633856 instance=ExtResource("1_6splh")]
-position = Vector2(192, -576)
-
-[node name="Muro56" parent="." index="57" unique_id=273144918 instance=ExtResource("1_6splh")]
-position = Vector2(448, -576)
-
-[node name="Muro57" parent="." index="58" unique_id=252589456 instance=ExtResource("1_6splh")]
-position = Vector2(704, -576)
-
-[node name="Muro58" parent="." index="59" unique_id=108658801 instance=ExtResource("1_6splh")]
-position = Vector2(960, -576)
-
-[node name="Muro59" parent="." index="60" unique_id=1748123507 instance=ExtResource("1_6splh")]
-position = Vector2(-320, -320)
-
-[node name="Muro60" parent="." index="61" unique_id=1538086065 instance=ExtResource("1_6splh")]
-position = Vector2(-64, -320)
-
-[node name="Muro61" parent="." index="62" unique_id=1307856335 instance=ExtResource("1_6splh")]
-position = Vector2(192, -320)
-
-[node name="Muro62" parent="." index="63" unique_id=626672387 instance=ExtResource("1_6splh")]
-position = Vector2(448, -320)
-
-[node name="Muro63" parent="." index="64" unique_id=1752967881 instance=ExtResource("1_6splh")]
-position = Vector2(704, -320)
-
-[node name="Muro64" parent="." index="65" unique_id=1456197917 instance=ExtResource("1_6splh")]
-position = Vector2(960, -320)
-
-[node name="Muro65" parent="." index="66" unique_id=39879271 instance=ExtResource("1_6splh")]
-position = Vector2(-320, -64)
-
-[node name="Muro66" parent="." index="67" unique_id=1854940175 instance=ExtResource("1_6splh")]
-position = Vector2(-64, -64)
-
-[node name="Muro67" parent="." index="68" unique_id=1850661828 instance=ExtResource("1_6splh")]
-position = Vector2(192, -64)
-
-[node name="Muro68" parent="." index="69" unique_id=1069074472 instance=ExtResource("1_6splh")]
-position = Vector2(448, -64)
-
-[node name="Muro69" parent="." index="70" unique_id=1730032627 instance=ExtResource("1_6splh")]
-position = Vector2(704, -64)
-
-[node name="Muro70" parent="." index="71" unique_id=1607730952 instance=ExtResource("1_6splh")]
-position = Vector2(960, -64)
-
-[node name="Muro71" parent="." index="72" unique_id=647021535 instance=ExtResource("1_6splh")]
-position = Vector2(-320, 192)
-
-[node name="Muro72" parent="." index="73" unique_id=2135798944 instance=ExtResource("1_6splh")]
-position = Vector2(-64, 192)
-
-[node name="Muro73" parent="." index="74" unique_id=2105808006 instance=ExtResource("1_6splh")]
-position = Vector2(192, 192)
-
-[node name="Muro74" parent="." index="75" unique_id=565377907 instance=ExtResource("1_6splh")]
-position = Vector2(448, 192)
-
-[node name="Muro75" parent="." index="76" unique_id=2086487069 instance=ExtResource("1_6splh")]
-position = Vector2(704, 192)
-
-[node name="Muro76" parent="." index="77" unique_id=1019720849 instance=ExtResource("1_6splh")]
-position = Vector2(960, 192)
-
-[node name="Muro77" parent="." index="78" unique_id=1546419932 instance=ExtResource("1_6splh")]
-position = Vector2(-320, 448)
-
-[node name="Muro78" parent="." index="79" unique_id=812582672 instance=ExtResource("1_6splh")]
-position = Vector2(-64, 448)
-
-[node name="Muro79" parent="." index="80" unique_id=748076431 instance=ExtResource("1_6splh")]
-position = Vector2(192, 448)
-
-[node name="Muro80" parent="." index="81" unique_id=1311164915 instance=ExtResource("1_6splh")]
-position = Vector2(448, 448)
-
-[node name="Muro81" parent="." index="82" unique_id=2064488376 instance=ExtResource("1_6splh")]
-position = Vector2(704, 448)
-
-[node name="Muro82" parent="." index="83" unique_id=1467215670 instance=ExtResource("1_6splh")]
-position = Vector2(960, 448)
-
-[node name="Caja" parent="." index="84" unique_id=824751243 instance=ExtResource("2_2r3by")]
-position = Vector2(-64, -704)
-
-[node name="Caja2" parent="." index="85" unique_id=574399511 instance=ExtResource("2_2r3by")]
-position = Vector2(320, -704)
-
-[node name="Caja3" parent="." index="86" unique_id=263588403 instance=ExtResource("2_2r3by")]
-position = Vector2(448, -704)
-
-[node name="Caja4" parent="." index="87" unique_id=2002054166 instance=ExtResource("2_2r3by")]
-position = Vector2(576, -704)
-
-[node name="Caja5" parent="." index="88" unique_id=644564005 instance=ExtResource("2_2r3by")]
-position = Vector2(704, -704)
-
-[node name="Caja6" parent="." index="89" unique_id=1743616446 instance=ExtResource("2_2r3by")]
-position = Vector2(-192, -576)
-
-[node name="Caja7" parent="." index="90" unique_id=72945894 instance=ExtResource("2_2r3by")]
-position = Vector2(64, -576)
-
-[node name="Caja8" parent="." index="91" unique_id=101519785 instance=ExtResource("2_2r3by")]
-position = Vector2(320, -576)
-
-[node name="Caja9" parent="." index="92" unique_id=255537378 instance=ExtResource("2_2r3by")]
-position = Vector2(576, -576)
-
-[node name="Caja10" parent="." index="93" unique_id=758118046 instance=ExtResource("2_2r3by")]
-position = Vector2(832, -576)
-
-[node name="Caja11" parent="." index="94" unique_id=1947574929 instance=ExtResource("2_2r3by")]
-position = Vector2(-320, -448)
-
-[node name="Caja12" parent="." index="95" unique_id=995535096 instance=ExtResource("2_2r3by")]
-position = Vector2(-64, -448)
-
-[node name="Caja13" parent="." index="96" unique_id=1659412819 instance=ExtResource("2_2r3by")]
-position = Vector2(320, -448)
-
-[node name="Caja14" parent="." index="97" unique_id=1139600399 instance=ExtResource("2_2r3by")]
-position = Vector2(448, -448)
-
-[node name="Caja15" parent="." index="98" unique_id=505377322 instance=ExtResource("2_2r3by")]
-position = Vector2(704, -448)
-
-[node name="Caja16" parent="." index="99" unique_id=2006598236 instance=ExtResource("2_2r3by")]
-position = Vector2(832, -448)
-
-[node name="Caja17" parent="." index="100" unique_id=1690482152 instance=ExtResource("2_2r3by")]
-position = Vector2(-192, -320)
-
-[node name="Caja18" parent="." index="101" unique_id=883776131 instance=ExtResource("2_2r3by")]
-position = Vector2(64, -320)
-
-[node name="Caja19" parent="." index="102" unique_id=1547690096 instance=ExtResource("2_2r3by")]
-position = Vector2(320, -320)
-
-[node name="Caja20" parent="." index="103" unique_id=2042237298 instance=ExtResource("2_2r3by")]
-position = Vector2(576, -320)
-
-[node name="Caja21" parent="." index="104" unique_id=332158126 instance=ExtResource("2_2r3by")]
-position = Vector2(832, -320)
-
-[node name="Caja22" parent="." index="105" unique_id=465017494 instance=ExtResource("2_2r3by")]
-position = Vector2(1088, -320)
-
-[node name="Caja23" parent="." index="106" unique_id=1661387568 instance=ExtResource("2_2r3by")]
-position = Vector2(-320, -192)
-
-[node name="Caja24" parent="." index="107" unique_id=1758638782 instance=ExtResource("2_2r3by")]
-position = Vector2(-192, -192)
-
-[node name="Caja25" parent="." index="108" unique_id=299750492 instance=ExtResource("2_2r3by")]
-position = Vector2(-64, -192)
-
-[node name="Caja26" parent="." index="109" unique_id=773017631 instance=ExtResource("2_2r3by")]
-position = Vector2(64, -192)
-
-[node name="Caja27" parent="." index="110" unique_id=187310900 instance=ExtResource("2_2r3by")]
-position = Vector2(192, -192)
-
-[node name="Caja28" parent="." index="111" unique_id=878074197 instance=ExtResource("2_2r3by")]
-position = Vector2(320, -192)
-
-[node name="Caja29" parent="." index="112" unique_id=934318022 instance=ExtResource("2_2r3by")]
-position = Vector2(448, -192)
-
-[node name="Caja30" parent="." index="113" unique_id=1797888728 instance=ExtResource("2_2r3by")]
-position = Vector2(576, -192)
-
-[node name="Caja31" parent="." index="114" unique_id=967726082 instance=ExtResource("2_2r3by")]
-position = Vector2(704, -192)
-
-[node name="Caja32" parent="." index="115" unique_id=327568637 instance=ExtResource("2_2r3by")]
-position = Vector2(960, -192)
-
-[node name="Caja33" parent="." index="116" unique_id=1164411394 instance=ExtResource("2_2r3by")]
-position = Vector2(1088, -192)
-
-[node name="Caja34" parent="." index="117" unique_id=794955704 instance=ExtResource("2_2r3by")]
-position = Vector2(-448, -64)
-
-[node name="Caja35" parent="." index="118" unique_id=1604606200 instance=ExtResource("2_2r3by")]
-position = Vector2(-192, -64)
-
-[node name="Caja36" parent="." index="119" unique_id=1011166934 instance=ExtResource("2_2r3by")]
-position = Vector2(64, -64)
-
-[node name="Caja37" parent="." index="120" unique_id=31926306 instance=ExtResource("2_2r3by")]
-position = Vector2(320, -64)
-
-[node name="Caja38" parent="." index="121" unique_id=1901029630 instance=ExtResource("2_2r3by")]
-position = Vector2(832, -64)
-
-[node name="Caja39" parent="." index="122" unique_id=1096640571 instance=ExtResource("2_2r3by")]
-position = Vector2(1088, -64)
-
-[node name="Caja40" parent="." index="123" unique_id=2071114347 instance=ExtResource("2_2r3by")]
-position = Vector2(-448, 64)
-
-[node name="Caja41" parent="." index="124" unique_id=801739834 instance=ExtResource("2_2r3by")]
-position = Vector2(-192, 64)
-
-[node name="Caja42" parent="." index="125" unique_id=1091076718 instance=ExtResource("2_2r3by")]
-position = Vector2(-64, 64)
-
-[node name="Caja43" parent="." index="126" unique_id=1596170072 instance=ExtResource("2_2r3by")]
-position = Vector2(64, 64)
-
-[node name="Caja44" parent="." index="127" unique_id=616448760 instance=ExtResource("2_2r3by")]
-position = Vector2(192, 64)
-
-[node name="Caja45" parent="." index="128" unique_id=1421259090 instance=ExtResource("2_2r3by")]
-position = Vector2(320, 64)
-
-[node name="Caja46" parent="." index="129" unique_id=1860351440 instance=ExtResource("2_2r3by")]
-position = Vector2(448, 64)
-
-[node name="Caja47" parent="." index="130" unique_id=1638855416 instance=ExtResource("2_2r3by")]
-position = Vector2(576, 64)
-
-[node name="Caja48" parent="." index="131" unique_id=556232166 instance=ExtResource("2_2r3by")]
-position = Vector2(704, 64)
-
-[node name="Caja49" parent="." index="132" unique_id=628845488 instance=ExtResource("2_2r3by")]
-position = Vector2(832, 64)
-
-[node name="Caja50" parent="." index="133" unique_id=806637199 instance=ExtResource("2_2r3by")]
-position = Vector2(960, 64)
-
-[node name="Caja51" parent="." index="134" unique_id=1967700967 instance=ExtResource("2_2r3by")]
-position = Vector2(1088, 64)
-
-[node name="Caja52" parent="." index="135" unique_id=1370120322 instance=ExtResource("2_2r3by")]
-position = Vector2(-448, 192)
-
-[node name="Caja53" parent="." index="136" unique_id=1159729437 instance=ExtResource("2_2r3by")]
-position = Vector2(-192, 192)
-
-[node name="Caja54" parent="." index="137" unique_id=1912947423 instance=ExtResource("2_2r3by")]
-position = Vector2(64, 192)
-
-[node name="Caja55" parent="." index="138" unique_id=44648633 instance=ExtResource("2_2r3by")]
-position = Vector2(576, 192)
-
-[node name="Caja56" parent="." index="139" unique_id=221321478 instance=ExtResource("2_2r3by")]
-position = Vector2(832, 192)
-
-[node name="Caja57" parent="." index="140" unique_id=772528581 instance=ExtResource("2_2r3by")]
-position = Vector2(1088, 192)
-
-[node name="Caja58" parent="." index="141" unique_id=2071582940 instance=ExtResource("2_2r3by")]
-position = Vector2(-320, 320)
-
-[node name="Caja59" parent="." index="142" unique_id=505550912 instance=ExtResource("2_2r3by")]
-position = Vector2(-64, 320)
-
-[node name="Caja60" parent="." index="143" unique_id=1176666515 instance=ExtResource("2_2r3by")]
-position = Vector2(64, 320)
-
-[node name="Caja61" parent="." index="144" unique_id=892370841 instance=ExtResource("2_2r3by")]
-position = Vector2(320, 320)
-
-[node name="Caja62" parent="." index="145" unique_id=21749129 instance=ExtResource("2_2r3by")]
-position = Vector2(576, 320)
-
-[node name="Caja63" parent="." index="146" unique_id=515863192 instance=ExtResource("2_2r3by")]
-position = Vector2(832, 320)
-
-[node name="Caja64" parent="." index="147" unique_id=1748509517 instance=ExtResource("2_2r3by")]
-position = Vector2(960, 320)
-
-[node name="Caja65" parent="." index="148" unique_id=528123463 instance=ExtResource("2_2r3by")]
-position = Vector2(-192, 448)
-
-[node name="Caja66" parent="." index="149" unique_id=1353338949 instance=ExtResource("2_2r3by")]
-position = Vector2(576, 448)
-
-[node name="Caja67" parent="." index="150" unique_id=823862522 instance=ExtResource("2_2r3by")]
-position = Vector2(832, 448)
-
-[node name="Caja68" parent="." index="151" unique_id=1009063733 instance=ExtResource("2_2r3by")]
-position = Vector2(-64, 576)
-
-[node name="Caja69" parent="." index="152" unique_id=1376300692 instance=ExtResource("2_2r3by")]
-position = Vector2(64, 576)
-
-[node name="Caja70" parent="." index="153" unique_id=454806540 instance=ExtResource("2_2r3by")]
-position = Vector2(192, 576)
-
-[node name="Caja71" parent="." index="154" unique_id=2016446756 instance=ExtResource("2_2r3by")]
-position = Vector2(320, 576)
-
-[node name="Caja72" parent="." index="155" unique_id=235072984 instance=ExtResource("2_2r3by")]
-position = Vector2(576, 576)
-
-[node name="Caja73" parent="." index="156" unique_id=1272643118 instance=ExtResource("2_2r3by")]
-position = Vector2(704, 576)
-
-[node name="Jugador" parent="." index="157" unique_id=884006860 instance=ExtResource("3_gl3mm")]
-position = Vector2(-448, -704)
-
-[node name="Jugador2" parent="." index="158" unique_id=271741185 instance=ExtResource("3_gl3mm")]
-position = Vector2(-448, -192)
+[node name="Jugador2" parent="." index="4" unique_id=271741185 instance=ExtResource("3_gl3mm")]
+position = Vector2(1216, 704)
 id_jugador = 2
 sprite_personalizado = ExtResource("5_gl3mm")
+textura_bomba_propia = ExtResource("6_lgkjn")
+
+[node name="Jugador3" parent="." index="5" unique_id=263525552 instance=ExtResource("3_gl3mm")]
+position = Vector2(1216, -576)
+id_jugador = 3
+sprite_personalizado = ExtResource("7_sw7sj")
+textura_bomba_propia = ExtResource("9_cs056")
+
+[node name="Jugador4" parent="." index="6" unique_id=866541791 instance=ExtResource("3_gl3mm")]
+position = Vector2(-320, 704)
+id_jugador = 4
+sprite_personalizado = ExtResource("8_vhdj0")
+textura_bomba_propia = ExtResource("11_6vpah")
+
+[node name="ColorRect" parent="CapaVictoria" parent_id_path=PackedInt32Array(1271293587) index="0" unique_id=1107532958]
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="TextoGanador" parent="CapaVictoria/ColorRect" index="0" unique_id=1291555647]
+offset_left = -384.0
+offset_top = -196.0
+offset_right = 432.0
+offset_bottom = -72.0
+
+[node name="ContenedorBotones" parent="CapaVictoria/ColorRect" index="1" unique_id=1795078651]
+offset_left = -239.0
+offset_top = -4.0
+offset_right = 240.0
+offset_bottom = 192.0

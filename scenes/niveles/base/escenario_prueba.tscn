@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dwusk2ru160ps"]
+
+[ext_resource type="PackedScene" uid="uid://dp33oq5rjfafs" path="res://scenes/entidades/jugador.tscn" id="1_p3b2g"]
+[ext_resource type="PackedScene" uid="uid://83qehwspikiw" path="res://scenes/entidades/pilar.tscn" id="2_upisl"]
+[ext_resource type="PackedScene" uid="uid://dmr8fedr8ocj5" path="res://scenes/entidades/muro.tscn" id="3_8rp0o"]
+[ext_resource type="PackedScene" uid="uid://chy3tjholx73r" path="res://scenes/entidades/contenedor.tscn" id="4_36eth"]
+
+[node name="EscenarioPrueba" type="Node2D" unique_id=699518944]
+
+[node name="Jugador" parent="." unique_id=884006860 instance=ExtResource("1_p3b2g")]
+position = Vector2(389, 363)
+
+[node name="Pilar" parent="." unique_id=2019699787 instance=ExtResource("2_upisl")]
+position = Vector2(387, 206)
+
+[node name="Muro" parent="." unique_id=105527397 instance=ExtResource("3_8rp0o")]
+position = Vector2(233, 361)
+
+[node name="Contenedor" parent="." unique_id=824751243 instance=ExtResource("4_36eth")]
+position = Vector2(546, 360)

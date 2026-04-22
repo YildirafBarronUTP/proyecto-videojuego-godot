@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://csgs3s2ttjlxi"]
+
+[ext_resource type="Script" uid="uid://dkn8derobtjkf" path="res://scripts/nivel_multi_base.gd" id="1_a7eci"]
+[ext_resource type="AudioStream" uid="uid://b7onc4yo3n5k7" path="res://sounds/soundtrack/Arena/85046_newgrounds_parago.mp3" id="2_2xy2w"]
+[ext_resource type="AudioStream" uid="uid://bcquwbvu75r52" path="res://sounds/soundtrack/Arena/325470_Firehawk.mp3" id="3_c1nkj"]
+[ext_resource type="AudioStream" uid="uid://ca74qvtdvregr" path="res://sounds/soundtrack/Arena/350472_100725_OverallControl.mp3" id="4_5mkmx"]
+[ext_resource type="AudioStream" uid="uid://dfa1ha1784taa" path="res://sounds/soundtrack/Arena/467339_At_the_Speed_of_Light_FINA.mp3" id="5_jvd7h"]
+
+[node name="NivelBaseMulti" type="Node2D" unique_id=933823112]
+script = ExtResource("1_a7eci")
+playlist_arena = Array[AudioStream]([ExtResource("2_2xy2w"), ExtResource("3_c1nkj"), ExtResource("4_5mkmx"), ExtResource("5_jvd7h")])
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=500627136]
+zoom = Vector2(0.4, 0.4)
+
+[node name="CapaUI" type="CanvasLayer" parent="." unique_id=897512126]
+
+[node name="CapaVictoria" type="CanvasLayer" parent="." unique_id=1271293587]
+
+[node name="ColorRect" type="ColorRect" parent="CapaVictoria" unique_id=1107532958]
+anchors_preset = -1
+anchor_left = -1.3330001
+anchor_top = -1.383
+anchor_right = 1.3330001
+anchor_bottom = 1.383
+offset_left = -0.38391113
+offset_top = 0.184021
+offset_right = 0.38391113
+offset_bottom = -0.184021
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.49019608)
+
+[node name="TextoGanador" type="Label" parent="CapaVictoria/ColorRect" unique_id=1291555647]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -408.0
+offset_top = -319.0
+offset_right = 408.0
+offset_bottom = -195.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+text = "¡GANA JUGADOR 1!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContenedorBotones" type="VBoxContainer" parent="CapaVictoria/ColorRect" unique_id=1795078651]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.5
+offset_top = -98.0
+offset_right = 239.5
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="BtnReiniciar" type="Button" parent="CapaVictoria/ColorRect/ContenedorBotones" unique_id=1990684770]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Jugar de Nuevo"
+
+[node name="BtnMenu" type="Button" parent="CapaVictoria/ColorRect/ContenedorBotones" unique_id=167047128]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Volver al Menú"
+
+[node name="MusicaBatalla" type="AudioStreamPlayer" parent="." unique_id=123452649]

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c8i4qnmskycri"]
+
+[ext_resource type="Script" uid="uid://dthyq6l248wp6" path="res://scripts/mapa_procedural.gd" id="1_5y7k1"]
+[ext_resource type="PackedScene" uid="uid://dmr8fedr8ocj5" path="res://scenes/entidades/muro.tscn" id="2_iharo"]
+[ext_resource type="PackedScene" uid="uid://83qehwspikiw" path="res://scenes/entidades/pilar.tscn" id="3_m5spo"]
+[ext_resource type="PackedScene" uid="uid://chy3tjholx73r" path="res://scenes/entidades/contenedor.tscn" id="4_jpasi"]
+
+[node name="MapaProcedural" type="Node2D" unique_id=1964763230]
+script = ExtResource("1_5y7k1")
+escena_muro = ExtResource("2_iharo")
+escena_pilar = ExtResource("3_m5spo")
+escena_contenedor = ExtResource("4_jpasi")

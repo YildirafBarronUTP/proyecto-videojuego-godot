@@ -1,15 +1,9 @@
 [gd_scene format=3 uid="uid://dmr8fedr8ocj5"]
 
+[ext_resource type="PackedScene" uid="uid://pxsqog84m8vp" path="res://scenes/entidades/objeto_indestructible_base.tscn" id="1_4e6b6"]
 [ext_resource type="Texture2D" uid="uid://dw4ckoq2a4ibi" path="res://assets/muro.png" id="1_cso2g"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4e6b6"]
-size = Vector2(128, 128)
+[node name="Muro" unique_id=2019699787 groups=["indestructible"] instance=ExtResource("1_4e6b6")]
 
-[node name="Muro" type="StaticBody2D" unique_id=2010616474]
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=864453707]
+[node name="Sprite2D" parent="." index="0" unique_id=1924481150]
 texture = ExtResource("1_cso2g")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1251683158]
-shape = SubResource("RectangleShape2D_4e6b6")

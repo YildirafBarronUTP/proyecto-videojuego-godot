@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://83qehwspikiw"]
+
+[ext_resource type="PackedScene" uid="uid://pxsqog84m8vp" path="res://scenes/entidades/objeto_indestructible_base.tscn" id="1_mstvy"]
+[ext_resource type="Texture2D" uid="uid://cvoucs1kb2i1l" path="res://assets/pilar.png" id="2_e2fvr"]
+
+[node name="Pilar" unique_id=2019699787 groups=["indestructible"] instance=ExtResource("1_mstvy")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1924481150]
+texture = ExtResource("2_e2fvr")

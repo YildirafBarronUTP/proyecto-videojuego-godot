@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c447on0rr7bl4"
+path="res://.godot/imported/Jerry Five.mp3-95c46b0468fef9c588b904f728514a2a.mp3str"
+
+[deps]
+
+source_file="res://sounds/soundtrack/Menu_principal/Jerry Five.mp3"
+dest_files=["res://.godot/imported/Jerry Five.mp3-95c46b0468fef9c588b904f728514a2a.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
