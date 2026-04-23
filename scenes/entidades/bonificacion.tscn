@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dxp5q4ky65b0y"]
 
 [ext_resource type="Script" uid="uid://cnsbppcd7qhxs" path="res://scripts/bonificacion.gd" id="1_i7luy"]
+[ext_resource type="AudioStream" uid="uid://byi8hak6cyw25" path="res://sounds/sound effects/Power-Up.wav" id="2_nhm3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhm3q"]
 size = Vector2(64, 64)
@@ -14,3 +15,7 @@ script = ExtResource("1_i7luy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=81356606]
 shape = SubResource("RectangleShape2D_nhm3q")
+
+[node name="SonidoRecogida" type="AudioStreamPlayer2D" parent="." unique_id=2076494265]
+stream = ExtResource("2_nhm3q")
+volume_db = 0.438

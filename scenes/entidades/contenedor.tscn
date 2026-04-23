@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dgrn1gm6o2uxd" path="res://scenes/entidades/bonificacion_rango.tscn" id="2_vmu2o"]
 [ext_resource type="PackedScene" uid="uid://c7v4hqi46jlv3" path="res://scenes/entidades/bonificacion_velocidad.tscn" id="3_xubdh"]
 [ext_resource type="PackedScene" uid="uid://bawpj7ylhlebx" path="res://scenes/entidades/bonificacion_cargas.tscn" id="4_6wpiu"]
+[ext_resource type="AudioStream" uid="uid://bxt2iaqdsj68g" path="res://sounds/sound effects/Contenedor_destruido.wav" id="6_xubdh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_paepi"]
 size = Vector2(128, 128)
@@ -22,3 +23,6 @@ texture = ExtResource("1_a76c4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=752768977]
 shape = SubResource("RectangleShape2D_paepi")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1121023581]
+stream = ExtResource("6_xubdh")

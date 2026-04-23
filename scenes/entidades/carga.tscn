@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cgvlu0ultpmky" path="res://scripts/bomba.gd" id="1_um6la"]
 [ext_resource type="PackedScene" uid="uid://crnqcadbbw4a2" path="res://scenes/entidades/fuego.tscn" id="2_u5ksy"]
 [ext_resource type="Texture2D" uid="uid://crvdjmmocswmc" path="res://assets/carga.png" id="2_um6la"]
+[ext_resource type="AudioStream" uid="uid://bk8pxw1vx5xvy" path="res://sounds/sound effects/Tick.wav" id="4_7offs"]
+[ext_resource type="AudioStream" uid="uid://iyqm3hvqy5bp" path="res://sounds/sound effects/Detonacion.wav" id="5_iy3ur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um6la"]
 size = Vector2(128, 128)
@@ -33,3 +35,10 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeteccion" unique_id=1739957319]
 shape = SubResource("RectangleShape2D_w11xl")
+
+[node name="SonidoTick" type="AudioStreamPlayer2D" parent="." unique_id=2074067923]
+stream = ExtResource("4_7offs")
+
+[node name="SonidoExplosion" type="AudioStreamPlayer2D" parent="." unique_id=1881530480]
+stream = ExtResource("5_iy3ur")
+volume_db = 14.25

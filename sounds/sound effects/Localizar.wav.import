@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://blbeitqlxguya"
+path="res://.godot/imported/Localizar.wav-cf6ca65378734b0bc3588481f1333d62.sample"
+
+[deps]
+
+source_file="res://sounds/sound effects/Localizar.wav"
+dest_files=["res://.godot/imported/Localizar.wav-cf6ca65378734b0bc3588481f1333d62.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://iyqm3hvqy5bp"
+path="res://.godot/imported/Detonacion.wav-02f9610a1bac1182f7e43c70c56591d1.sample"
+
+[deps]
+
+source_file="res://sounds/sound effects/Detonacion.wav"
+dest_files=["res://.godot/imported/Detonacion.wav-02f9610a1bac1182f7e43c70c56591d1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
