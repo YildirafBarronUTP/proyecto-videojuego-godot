@@ -21,3 +21,4 @@ texture = SubResource("PlaceholderTexture2D_pgspb")
 shape = SubResource("RectangleShape2D_0l6ly")
 
 [node name="Timer" type="Timer" parent="." unique_id=1925794639]
+wait_time = 0.6

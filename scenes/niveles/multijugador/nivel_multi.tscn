@@ -1,42 +1,24 @@
 [gd_scene format=3 uid="uid://cy4suc3onf5vl"]
 
 [ext_resource type="PackedScene" uid="uid://csgs3s2ttjlxi" path="res://scenes/niveles/base/nivel_multi_base.tscn" id="1_2r3by"]
+[ext_resource type="Texture2D" uid="uid://bib5etuwo3u8b" path="res://assets/blue-s.png" id="2_0wsxe"]
 [ext_resource type="PackedScene" uid="uid://c8i4qnmskycri" path="res://scenes/niveles/multijugador/mapa_procedural.tscn" id="2_vhdj0"]
-[ext_resource type="PackedScene" uid="uid://dp33oq5rjfafs" path="res://scenes/entidades/jugador.tscn" id="3_gl3mm"]
-[ext_resource type="Texture2D" uid="uid://cin4k55rc8ov1" path="res://assets/red-s.png" id="5_gl3mm"]
-[ext_resource type="Texture2D" uid="uid://p5mtebb1pvmh" path="res://assets/red_charge.png" id="6_lgkjn"]
-[ext_resource type="Texture2D" uid="uid://6wt63oun24ob" path="res://assets/green-s.png" id="7_sw7sj"]
-[ext_resource type="Texture2D" uid="uid://ud21mf7oo3m1" path="res://assets/purple-s.png" id="8_vhdj0"]
-[ext_resource type="Texture2D" uid="uid://cy1ebig5oqqq2" path="res://assets/green_charge.png" id="9_cs056"]
-[ext_resource type="Texture2D" uid="uid://cud4fmtn7r2gv" path="res://assets/purple_charge.png" id="11_6vpah"]
+[ext_resource type="Texture2D" uid="uid://cin4k55rc8ov1" path="res://assets/red-s.png" id="3_ak1qn"]
+[ext_resource type="Texture2D" uid="uid://6wt63oun24ob" path="res://assets/green-s.png" id="4_sw7sj"]
+[ext_resource type="Texture2D" uid="uid://ud21mf7oo3m1" path="res://assets/purple-s.png" id="5_vhdj0"]
+[ext_resource type="Texture2D" uid="uid://826i5wyitdax" path="res://assets/blue_charge.png" id="6_5i48x"]
+[ext_resource type="Texture2D" uid="uid://p5mtebb1pvmh" path="res://assets/red_charge.png" id="7_lgkjn"]
+[ext_resource type="Texture2D" uid="uid://cy1ebig5oqqq2" path="res://assets/green_charge.png" id="8_cs056"]
+[ext_resource type="Texture2D" uid="uid://cud4fmtn7r2gv" path="res://assets/purple_charge.png" id="9_6vpah"]
 
 [node name="NivelMulti" unique_id=933823112 instance=ExtResource("1_2r3by")]
+texturas_jugadores = Array[Texture2D]([ExtResource("2_0wsxe"), ExtResource("3_ak1qn"), ExtResource("4_sw7sj"), ExtResource("5_vhdj0")])
+texturas_bombas = Array[Texture2D]([ExtResource("6_5i48x"), ExtResource("7_lgkjn"), ExtResource("8_cs056"), ExtResource("9_6vpah")])
 
 [node name="MapaProcedural" parent="." index="0" unique_id=1964763230 instance=ExtResource("2_vhdj0")]
 
 [node name="Camera2D" parent="." index="1" unique_id=500627136]
 position = Vector2(0, 64)
-
-[node name="Jugador" parent="." index="3" unique_id=884006860 instance=ExtResource("3_gl3mm")]
-position = Vector2(-320, -576)
-
-[node name="Jugador2" parent="." index="4" unique_id=271741185 instance=ExtResource("3_gl3mm")]
-position = Vector2(1216, 704)
-id_jugador = 2
-sprite_personalizado = ExtResource("5_gl3mm")
-textura_bomba_propia = ExtResource("6_lgkjn")
-
-[node name="Jugador3" parent="." index="5" unique_id=263525552 instance=ExtResource("3_gl3mm")]
-position = Vector2(1216, -576)
-id_jugador = 3
-sprite_personalizado = ExtResource("7_sw7sj")
-textura_bomba_propia = ExtResource("9_cs056")
-
-[node name="Jugador4" parent="." index="6" unique_id=866541791 instance=ExtResource("3_gl3mm")]
-position = Vector2(-320, 704)
-id_jugador = 4
-sprite_personalizado = ExtResource("8_vhdj0")
-textura_bomba_propia = ExtResource("11_6vpah")
 
 [node name="ColorRect" parent="CapaVictoria" parent_id_path=PackedInt32Array(1271293587) index="0" unique_id=1107532958]
 anchors_preset = 15

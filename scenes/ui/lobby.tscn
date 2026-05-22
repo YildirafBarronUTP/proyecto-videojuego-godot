@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://ct3ql3ftsmd7c"]
+
+[ext_resource type="Script" uid="uid://chh2mv2paga57" path="res://scripts/lobby.gd" id="1_6oakf"]
+
+[node name="Lobby" type="Control" unique_id=1102504621]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6oakf")
+
+[node name="Panel" type="Panel" parent="." unique_id=337193739]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 832.0
+offset_bottom = 512.0
+
+[node name="BtnP1" type="Button" parent="Panel" unique_id=908121865]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 93.0
+offset_right = 210.0
+offset_bottom = 124.0
+text = "Jugador 1"
+
+[node name="BtnP2" type="Button" parent="Panel" unique_id=769765950]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 93.0
+offset_right = 466.0
+offset_bottom = 124.0
+text = "Jugador 2"
+
+[node name="BtnP3" type="Button" parent="Panel" unique_id=789670173]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 190.0
+offset_right = 210.0
+offset_bottom = 221.0
+text = "Jugador 3"
+
+[node name="BtnP4" type="Button" parent="Panel" unique_id=961236520]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 190.0
+offset_right = 466.0
+offset_bottom = 221.0
+text = "Jugador 4"
+
+[node name="BtnIniciar" type="Button" parent="Panel" unique_id=706720774]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 256.0
+offset_right = 305.0
+offset_bottom = 287.0
+text = "Jugar"
+
+[connection signal="pressed" from="Panel/BtnIniciar" to="." method="_on_btn_iniciar_partida_pressed"]

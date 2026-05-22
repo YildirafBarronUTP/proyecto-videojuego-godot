@@ -1,8 +1,21 @@
 extends Node2D
 class_name NivelMultiBase
 
+@export var escena_humano: PackedScene
+@export var escena_cpu: PackedScene
+@export var texturas_jugadores: Array[Texture2D] = []
+@export var texturas_bombas: Array[Texture2D] = []
+
 var juego_terminado: bool = false
 var partida_iniciada: bool = false
+var astar_grid: AStarGrid2D
+
+var posiciones_spawn: Dictionary = {
+	1: Vector2(-320, -576),
+	2: Vector2(1216, -576),
+	3: Vector2(-320, 704),
+	4: Vector2(1216, 704)
+}
 
 @export var playlist_arena: Array[AudioStream] = []
 @onready var reproductor_musica: AudioStreamPlayer = $MusicaBatalla
@@ -25,14 +38,79 @@ func _ready() -> void:
 	if reproductor_musica and not playlist_arena.is_empty():
 		reproductor_musica.finished.connect(reproducir_siguiente_aleatoria)
 		reproducir_siguiente_aleatoria()
-	
+		
 	await get_tree().create_timer(1.0).timeout
-
+	
+	inicializar_navegacion()
+	inyectar_participantes()
 	conectar_jugadores()
+	
 	partida_iniciada = true
-
 	var total_jugadores = get_tree().get_nodes_in_group("jugadores").size()
 	print("Árbitro: Partida iniciada correctamente con ", total_jugadores, " jugadores.")
+
+func inicializar_navegacion() -> void:
+	astar_grid = AStarGrid2D.new()
+	astar_grid.region = Rect2i(0, 0, 15, 13)
+	astar_grid.cell_size = Vector2(128, 128)
+	astar_grid.offset = Vector2(-512, -768)
+	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	astar_grid.update()
+
+	var muros = get_tree().get_nodes_in_group("indestructibles")
+	if muros.is_empty():
+		muros = get_tree().get_nodes_in_group("indestructible")
+	for muro in muros:
+		var celda = pos_a_celda(muro.global_position)
+		astar_grid.set_point_solid(celda, true)
+
+	var contenedores = get_tree().get_nodes_in_group("contenedores")
+	for caja in contenedores:
+		var celda = pos_a_celda(caja.global_position)
+		astar_grid.set_point_solid(celda, true)
+
+# --- FUNCIONES MATEMÁTICAS DEL MAPA ---
+func pos_a_celda(pos: Vector2) -> Vector2i:
+	return Vector2i(
+		int(floor((pos.x - astar_grid.offset.x) / astar_grid.cell_size.x)),
+		int(floor((pos.y - astar_grid.offset.y) / astar_grid.cell_size.y))
+	)
+
+func celda_a_pos(celda: Vector2i) -> Vector2:
+	return Vector2(
+		(celda.x * astar_grid.cell_size.x) + astar_grid.offset.x + (astar_grid.cell_size.x / 2.0),
+		(celda.y * astar_grid.cell_size.y) + astar_grid.offset.y + (astar_grid.cell_size.y / 2.0)
+	)
+# --------------------------------------
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		volver_al_menu_principal()
+
+func inyectar_participantes() -> void:
+	for id in GameManager.configuracion_jugadores.keys():
+		var tipo_control = GameManager.configuracion_jugadores[id]
+		var nuevo_personaje: CharacterBody2D
+		
+		if tipo_control == "HUMANO" and escena_humano != null:
+			nuevo_personaje = escena_humano.instantiate()
+		elif escena_cpu != null:
+			nuevo_personaje = escena_cpu.instantiate()
+		else:
+			continue 
+		
+		nuevo_personaje.id_jugador = id
+		nuevo_personaje.global_position = posiciones_spawn[id]
+		
+		if texturas_jugadores.size() >= id:
+			if "sprite_personalizado" in nuevo_personaje:
+				nuevo_personaje.sprite_personalizado = texturas_jugadores[id - 1]
+				
+		if texturas_bombas.size() >= id:
+			if "textura_bomba" in nuevo_personaje:
+				nuevo_personaje.textura_bomba = texturas_bombas[id - 1]
+				
+		add_child(nuevo_personaje)
 
 func reproducir_siguiente_aleatoria() -> void:
 	if playlist_arena.is_empty():
@@ -46,7 +124,6 @@ func reproducir_siguiente_aleatoria() -> void:
 		
 	reproductor_musica.stream = nueva_cancion
 	reproductor_musica.play()
-	print("DJ: Reproduciendo pista aleatoria: ", nueva_cancion.resource_path.get_file())
 
 func cambiar_a_siguiente_cancion() -> void:
 	reproducir_siguiente_aleatoria()
@@ -63,6 +140,9 @@ func _on_jugador_eliminado() -> void:
 	verificar_estado_partida.call_deferred()
 
 func verificar_estado_partida() -> void:
+	if not is_inside_tree() or get_tree() == null:
+		return
+		
 	if not partida_iniciada or juego_terminado:
 		return
 		
@@ -95,7 +175,9 @@ func mostrar_pantalla_final(mensaje: String) -> void:
 	contenedor_botones.visible = true
 
 func _on_btn_reiniciar_pressed() -> void:
+	juego_terminado = true
 	get_tree().reload_current_scene()
 
 func volver_al_menu_principal() -> void:
+	juego_terminado = true 
 	get_tree().change_scene_to_file("res://scenes/ui/menu_principal.tscn")

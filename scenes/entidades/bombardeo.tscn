@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://nbvo5avxvjpp"]
+
+[ext_resource type="Script" uid="uid://bhg10ppsj8d4x" path="res://scripts/bombardeo.gd" id="1_3qqdw"]
+[ext_resource type="PackedScene" uid="uid://crnqcadbbw4a2" path="res://scenes/entidades/fuego.tscn" id="2_fjkww"]
+[ext_resource type="PackedScene" uid="uid://1xpfh7huntfm" path="res://scenes/entidades/pilar_agrietado.tscn" id="3_c5d4h"]
+
+[node name="Bombardeo" type="Node2D" unique_id=1421804781]
+script = ExtResource("1_3qqdw")
+escena_fuego = ExtResource("2_fjkww")
+escena_pilar_agrietado = ExtResource("3_c5d4h")

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://1xpfh7huntfm"]
+
+[ext_resource type="Script" uid="uid://m77ycjj6udd" path="res://scripts/pilar_agrietado.gd" id="1_4hvju"]
+[ext_resource type="Texture2D" uid="uid://bsj0w6w8lfu22" path="res://assets/contenedor.png" id="2_d73j2"]
+
+[node name="PilarAgrietado" type="StaticBody2D" unique_id=1583672104]
+script = ExtResource("1_4hvju")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1360980256]
+texture = ExtResource("2_d73j2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=277494243]

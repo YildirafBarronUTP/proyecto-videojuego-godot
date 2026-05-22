@@ -1,6 +1,7 @@
 extends Area2D
 
-@export_enum("rango", "velocidad", "cargas") var tipo_bonificacion: String = "rango"
+# Se añadieron las nuevas armas al listado desplegable del Inspector
+@export_enum("rango", "velocidad", "cargas", "aereo", "descarga") var tipo_bonificacion: String = "rango"
 @export var valor_bonificacion: float = 1.0
 
 @onready var sprite: Sprite2D = $Sprite2D
@@ -10,6 +11,7 @@ extends Area2D
 var fue_recogido: bool = false
 
 func _ready() -> void:
+	add_to_group("bonificaciones")
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
@@ -17,9 +19,7 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 		
 	if body is CharacterBody2D and body.has_method("aplicar_bonificacion"):
-		
 		fue_recogido = true
-		
 		body.aplicar_bonificacion(tipo_bonificacion, valor_bonificacion)
 		
 		if sprite:

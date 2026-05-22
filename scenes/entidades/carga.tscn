@@ -10,7 +10,7 @@
 size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w11xl"]
-size = Vector2(130, 130)
+size = Vector2(127, 127)
 
 [node name="Carga" type="StaticBody2D" unique_id=898758405]
 collision_layer = 8

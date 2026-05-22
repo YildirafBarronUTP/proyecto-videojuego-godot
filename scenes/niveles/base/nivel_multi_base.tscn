@@ -2,12 +2,16 @@
 
 [ext_resource type="Script" uid="uid://dkn8derobtjkf" path="res://scripts/nivel_multi_base.gd" id="1_a7eci"]
 [ext_resource type="AudioStream" uid="uid://b7onc4yo3n5k7" path="res://sounds/soundtrack/Arena/85046_newgrounds_parago.mp3" id="2_2xy2w"]
+[ext_resource type="PackedScene" uid="uid://dp33oq5rjfafs" path="res://scenes/entidades/jugador.tscn" id="2_5mkmx"]
 [ext_resource type="AudioStream" uid="uid://bcquwbvu75r52" path="res://sounds/soundtrack/Arena/325470_Firehawk.mp3" id="3_c1nkj"]
+[ext_resource type="PackedScene" uid="uid://ct4tagqiiecb4" path="res://scenes/entidades/cpu.tscn" id="3_jvd7h"]
 [ext_resource type="AudioStream" uid="uid://ca74qvtdvregr" path="res://sounds/soundtrack/Arena/350472_100725_OverallControl.mp3" id="4_5mkmx"]
 [ext_resource type="AudioStream" uid="uid://dfa1ha1784taa" path="res://sounds/soundtrack/Arena/467339_At_the_Speed_of_Light_FINA.mp3" id="5_jvd7h"]
 
 [node name="NivelBaseMulti" type="Node2D" unique_id=933823112]
 script = ExtResource("1_a7eci")
+escena_humano = ExtResource("2_5mkmx")
+escena_cpu = ExtResource("3_jvd7h")
 playlist_arena = Array[AudioStream]([ExtResource("2_2xy2w"), ExtResource("3_c1nkj"), ExtResource("4_5mkmx"), ExtResource("5_jvd7h")])
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=500627136]

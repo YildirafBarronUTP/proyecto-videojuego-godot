@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://v6molrajqse4" path="res://scripts/jugador.gd" id="1_pesnq"]
 [ext_resource type="PackedScene" uid="uid://ioajrmpchrdl" path="res://scenes/entidades/carga.tscn" id="2_jmfal"]
 [ext_resource type="Texture2D" uid="uid://bib5etuwo3u8b" path="res://assets/blue-s.png" id="3_jmfal"]
+[ext_resource type="PackedScene" uid="uid://nbvo5avxvjpp" path="res://scenes/entidades/bombardeo.tscn" id="3_uxcw7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jmfal"]
 radius = 63.8
@@ -13,6 +14,7 @@ collision_mask = 59
 motion_mode = 1
 script = ExtResource("1_pesnq")
 escena_bomba = ExtResource("2_jmfal")
+escena_bombardeo = ExtResource("3_uxcw7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1070796623]
 position = Vector2(0.50000095, 3.499998)
