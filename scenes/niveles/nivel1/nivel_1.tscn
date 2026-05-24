@@ -73,4 +73,4 @@ autoplay = &"animacion_suelo"
 speed_scale = 0.466
 
 [node name="Jugador" parent="." unique_id=884006860 instance=ExtResource("7_5oyw6")]
-position = Vector2(-320, -565)
+position = Vector2(-320, -570)

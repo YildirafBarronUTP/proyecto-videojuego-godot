@@ -9,15 +9,15 @@ func _ready() -> void:
 	
 	# 1. Configurar el tema principal (main_theme.wav)
 	musica_fondo.stream = load("res://sounds/soundtrack/Nivel1/main_theme.wav")
-	musica_fondo.volume_db = -5.0 # Ajusta el volumen si suena muy fuerte
+	musica_fondo.volume_db = -5.0 # Ajusta el volumen
 	add_child(musica_fondo)
-	musica_fondo.play() # Inicia la música de fondo
+	musica_fondo.play()
 	
-	# 2. Configurar el sonido ambiental de la lava (lava_flow.wav)
+	# 2. Configurar el sonido ambiental (lava_flow.wav)
 	sonido_lava.stream = load("res://sounds/soundtrack/Nivel1/lava_flow.wav")
-	sonido_lava.volume_db = -17.0 # Un poco más bajo para que no opaque la música
+	sonido_lava.volume_db = -17.0 # para que no opaque la música
 	add_child(sonido_lava)
-	sonido_lava.play() # Inicia el sonido de la lava
+	sonido_lava.play()
 
 func _process(_delta: float) -> void:
 	pass

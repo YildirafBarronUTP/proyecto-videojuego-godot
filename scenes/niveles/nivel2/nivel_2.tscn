@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cildlif4a0xgj"]
+
+[ext_resource type="Script" uid="uid://k36xhdj6dh5y" path="res://scripts/nivel_2.gd" id="1_agofm"]
+[ext_resource type="Texture2D" uid="uid://b4h431nliaka6" path="res://assets/lvl2_suelo.png" id="1_l6gx6"]
+[ext_resource type="Script" uid="uid://butvlrd4ef6so" path="res://scripts/lvl_2_mapa_procedural.gd" id="1_nc21b"]
+[ext_resource type="PackedScene" uid="uid://dp33oq5rjfafs" path="res://scenes/entidades/jugador.tscn" id="2_nc21b"]
+[ext_resource type="PackedScene" uid="uid://c2ak7jkrauo20" path="res://scenes/entidades/lvl2_muro.tscn" id="3_bguku"]
+[ext_resource type="PackedScene" uid="uid://cs250vnoqralq" path="res://scenes/entidades/lvl2_pilar.tscn" id="4_h40ld"]
+[ext_resource type="PackedScene" uid="uid://cf228kukkn7l1" path="res://scenes/entidades/lvl2_contenedor.tscn" id="5_axy6k"]
+
+[node name="Nivel2" type="Node2D" unique_id=51051986]
+script = ExtResource("1_agofm")
+
+[node name="lvl2_MapaProcedural" type="Node2D" parent="." unique_id=156181156]
+script = ExtResource("1_nc21b")
+escena_muro = ExtResource("3_bguku")
+escena_pilar = ExtResource("4_h40ld")
+escena_contenedor = ExtResource("5_axy6k")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2093352163]
+position = Vector2(0, 64)
+zoom = Vector2(0.4, 0.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1251184782]
+z_index = -10
+position = Vector2(507.50012, 70.49999)
+scale = Vector2(1.9392325, 2.708042)
+texture = ExtResource("1_l6gx6")
+
+[node name="Jugador" parent="." unique_id=884006860 instance=ExtResource("2_nc21b")]
+position = Vector2(-320, -570)

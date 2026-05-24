@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c2ak7jkrauo20"]
+
+[ext_resource type="Texture2D" uid="uid://be3grp5cb7vfo" path="res://assets/lvl2_muro.png" id="1_phn08"]
+[ext_resource type="Script" uid="uid://dawa44v1xj4gw" path="res://scripts/objeto_indestructible_base.gd" id="2_60lbf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phn08"]
+size = Vector2(125, 125)
+
+[node name="Lvl2Muro" type="StaticBody2D" unique_id=450870923 groups=["indestructible"]]
+collision_mask = 0
+script = ExtResource("2_60lbf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1616246487]
+texture = ExtResource("1_phn08")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2036096237]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_phn08")

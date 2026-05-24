@@ -1,10 +1,10 @@
-extends MapaProcedural # Hereda toda la lógica de tu compañero
+extends MapaProcedural # Heredar lógica
 
 func _ready() -> void:
-	# Aquí puedes personalizar las dimensiones de TU nivel antes de que se genere
+	# personalizar las dimensiones
 	columnas = 15
 	filas = 13
-	probabilidad_contenedor = 0.7 # Más o menos obstáculos según prefieras
+	probabilidad_contenedor = 0.7 # Más o menos obstáculos
 	
-	# Llama a la función del script de tu compañero para que dibuje el mapa
+	# Llama a la función del script que dibuja el mapa
 	super._ready()
