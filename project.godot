@@ -155,6 +155,7 @@ p4_bomba={
 2d_physics/layer_4="Bombas"
 2d_physics/layer_5="Daño/Fuego"
 2d_physics/layer_6="Bonificaciones"
+2d_physics/layer_9="Enemigos"
 
 [physics]
 

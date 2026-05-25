@@ -17,7 +17,3 @@ func _ready() -> void:
 	cortocircuito.volume_db = -15.0 # para que no opaque la música
 	add_child(cortocircuito)
 	cortocircuito.play()
-
-
-func _process(delta: float) -> void:
-	pass

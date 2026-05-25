@@ -46,14 +46,13 @@ _data = {
 &"animacion_suelo": SubResource("Animation_3l3ck")
 }
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5oyw6"]
+vertices = PackedVector2Array(1258.9688, -616.09375, 1256.0234, 688.9531, -372.03906, 682.03906, -377.95313, -631.89844)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-388, -642, 1269, -626, 1266, 699, -382, 692)])
+
 [node name="Nivel1" type="Node2D" unique_id=1796583932]
 script = ExtResource("1_t06l3")
-
-[node name="lvl1_MapaProcedural" type="Node2D" parent="." unique_id=1705707107]
-script = ExtResource("2_q1lo0")
-escena_muro = ExtResource("3_e3u7i")
-escena_pilar = ExtResource("4_fv2ss")
-escena_contenedor = ExtResource("5_5oyw6")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=661801059]
 position = Vector2(0, 64)
@@ -74,3 +73,12 @@ speed_scale = 0.466
 
 [node name="Jugador" parent="." unique_id=884006860 instance=ExtResource("7_5oyw6")]
 position = Vector2(-320, -570)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1753237332]
+navigation_polygon = SubResource("NavigationPolygon_5oyw6")
+
+[node name="lvl1_MapaProcedural" type="Node2D" parent="NavigationRegion2D" unique_id=1705707107]
+script = ExtResource("2_q1lo0")
+escena_muro = ExtResource("3_e3u7i")
+escena_pilar = ExtResource("4_fv2ss")
+escena_contenedor = ExtResource("5_5oyw6")
