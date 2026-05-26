@@ -2,6 +2,40 @@
 
 [ext_resource type="Texture2D" uid="uid://cnnujinbfcm4t" path="res://assets/jefe1.png" id="1_dbsjq"]
 [ext_resource type="Script" uid="uid://bwk4skcat31fq" path="res://scripts/jefe_1.gd" id="1_hb51k"]
+[ext_resource type="Texture2D" uid="uid://bq6rw6o2omqm2" path="res://assets/jefe1_ataque.png" id="2_htvao"]
+[ext_resource type="AudioStream" uid="uid://h5vao6wted66" path="res://sounds/soundtrack/Nivel1/jefe_pasos.wav" id="4_6iimo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6utd"]
+atlas = ExtResource("2_htvao")
+region = Rect2(252, 0, 252, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnpuo"]
+atlas = ExtResource("2_htvao")
+region = Rect2(504, 0, 252, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1px1g"]
+atlas = ExtResource("2_htvao")
+region = Rect2(756, 0, 252, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx7bt"]
+atlas = ExtResource("2_htvao")
+region = Rect2(252, 256, 252, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6txsd"]
+atlas = ExtResource("2_htvao")
+region = Rect2(0, 256, 252, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlacq"]
+atlas = ExtResource("2_htvao")
+region = Rect2(504, 256, 252, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luvia"]
+atlas = ExtResource("2_htvao")
+region = Rect2(756, 256, 252, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65xne"]
+atlas = ExtResource("2_htvao")
+region = Rect2(0, 512, 252, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hb51k"]
 atlas = ExtResource("1_dbsjq")
@@ -69,8 +103,32 @@ region = Rect2(534, 227, 178, 227)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m6utd"]
 animations = [{
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6utd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnpuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1px1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx7bt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6txsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlacq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luvia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65xne")
+}],
+"loop": false,
 "name": &"ataque",
 "speed": 5.0
 }, {
@@ -144,20 +202,31 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mnpuo"]
-radius = 52.0
-height = 126.0
+radius = 48.0
+height = 106.0
 
 [node name="Jefe1" type="CharacterBody2D" unique_id=196049011]
 collision_layer = 256
-collision_mask = 27
+collision_mask = 283
 script = ExtResource("1_hb51k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1355008262]
 sprite_frames = SubResource("SpriteFrames_m6utd")
-animation = &"ataque"
+animation = &"walkUp"
+frame_progress = 0.06692402
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=102776337]
-position = Vector2(-18, 37)
+position = Vector2(6, 37)
 shape = SubResource("CapsuleShape2D_mnpuo")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1966129240]
+path_desired_distance = 60.0
+target_desired_distance = 50.0
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1994976458]
+position = Vector2(2, -12)
+target_position = Vector2(0, 60)
+collision_mask = 2
+
+[node name="SonidoPasos" type="AudioStreamPlayer2D" parent="." unique_id=1189138420]
+stream = ExtResource("4_6iimo")

@@ -47,9 +47,10 @@ _data = {
 }
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5oyw6"]
-vertices = PackedVector2Array(1258.9688, -616.09375, 1256.0234, 688.9531, -372.03906, 682.03906, -377.95313, -631.89844)
+vertices = PackedVector2Array(1252.6875, 679.1094, -350.14063, 684.8828, -355.85156, -610.0469, 1240.2969, -612.9375)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-388, -642, 1269, -626, 1266, 699, -382, 692)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-388, -642, 1272, -645, 1285, 711, -382, 717)])
+agent_radius = 45.0
 
 [node name="Nivel1" type="Node2D" unique_id=1796583932]
 script = ExtResource("1_t06l3")

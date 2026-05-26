@@ -10,7 +10,7 @@ size = Vector2(90, 90)
 
 [node name="Fuego" type="Area2D" unique_id=242590720]
 collision_layer = 16
-collision_mask = 12
+collision_mask = 268
 script = ExtResource("1_78wkc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1815649558]
