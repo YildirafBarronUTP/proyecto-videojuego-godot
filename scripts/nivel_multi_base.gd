@@ -88,28 +88,40 @@ func _unhandled_input(event: InputEvent) -> void:
 		volver_al_menu_principal()
 
 func inyectar_participantes() -> void:
+	# El diccionario con los colores para cada ID
+	var colores_por_id = {
+		1: Color.WHITE,          # J1 (Voltio original)
+		2: Color(1.0, 0.2, 0.2), # J2 Rojo
+		3: Color(0.2, 1.0, 0.2), # J3 Verde
+		4: Color(1.0, 0.9, 0.2)  # J4 Amarillo
+	}
+
 	for id in GameManager.configuracion_jugadores.keys():
 		var tipo_control = GameManager.configuracion_jugadores[id]
 		var nuevo_personaje: CharacterBody2D
-		
+
 		if tipo_control == "HUMANO" and escena_humano != null:
 			nuevo_personaje = escena_humano.instantiate()
 		elif escena_cpu != null:
 			nuevo_personaje = escena_cpu.instantiate()
 		else:
 			continue 
-		
+
 		nuevo_personaje.id_jugador = id
 		nuevo_personaje.global_position = posiciones_spawn[id]
-		
+
+		# AQUÍ LE MANDAMOS EL COLOR A LA CPU
+		if tipo_control != "HUMANO" and "color_robot" in nuevo_personaje:
+			nuevo_personaje.color_robot = colores_por_id[id]
+
 		if texturas_jugadores.size() >= id:
 			if "sprite_personalizado" in nuevo_personaje:
 				nuevo_personaje.sprite_personalizado = texturas_jugadores[id - 1]
-				
+
 		if texturas_bombas.size() >= id:
 			if "textura_bomba" in nuevo_personaje:
 				nuevo_personaje.textura_bomba = texturas_bombas[id - 1]
-				
+
 		add_child(nuevo_personaje)
 
 func reproducir_siguiente_aleatoria() -> void:

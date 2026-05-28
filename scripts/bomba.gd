@@ -4,7 +4,6 @@ signal bomba_detonada
 
 var poder_explosion: int = 2
 var jugador_propietario: CharacterBody2D
-var textura_inicial: Texture2D 
 
 @export var tiempo_explosion: float = 3.0
 @export var escena_fuego: PackedScene
@@ -12,7 +11,7 @@ var textura_inicial: Texture2D
 @onready var timer: Timer = $Timer
 @onready var area_deteccion: Area2D = $AreaDeteccion
 @onready var colision_solida: CollisionShape2D = $CollisionShape2D 
-@onready var sprite: Sprite2D = $Sprite2D 
+@onready var sprite: AnimatedSprite2D = $Sprite2D 
 
 @onready var sonido_tick: AudioStreamPlayer2D = $SonidoTick
 @onready var sonido_explosion: AudioStreamPlayer2D = $SonidoExplosion
@@ -21,8 +20,6 @@ func _ready() -> void:
 	# AQUÍ ESTÁ LA LÍNEA NUEVA VITAL PARA LA IA:
 	add_to_group("bombas")
 	
-	if textura_inicial != null and sprite != null:
-		sprite.texture = textura_inicial
 
 	timer.wait_time = tiempo_explosion
 	timer.one_shot = true
@@ -44,8 +41,6 @@ func _ready() -> void:
 	colision_solida.disabled = false
 	area_deteccion.body_exited.connect(_on_cuerpo_salio)
 
-func configurar_apariencia(nueva_textura: Texture2D) -> void:
-	textura_inicial = nueva_textura
 
 func _on_cuerpo_salio(body: Node2D) -> void:
 	if body is CharacterBody2D:

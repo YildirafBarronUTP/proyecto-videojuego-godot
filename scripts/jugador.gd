@@ -30,8 +30,8 @@ var mira_instanciada: Node2D = null
 
 func _ready() -> void:
 	add_to_group("jugadores")
-	if sprite_personalizado:
-		$Sprite2D.texture = sprite_personalizado
+	#if sprite_personalizado:
+		#$Sprite2D.texture = sprite_personalizado
 
 func _physics_process(_delta: float) -> void:
 	if esta_aturdido or vidas <= 0:
@@ -59,7 +59,21 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed(prefijo + "arriba"): direccion.y -= 1
 
 	if direccion != Vector2.ZERO:
+		$Sprite2D.flip_h = false # Nos aseguramos de que ya no use el modo espejo
+
+		# Usamos las 4 animaciones reales que acabas de crear
+		if direccion.x < 0:
+			$Sprite2D.play("perfil_izquierdo")
+		elif direccion.x > 0:
+			$Sprite2D.play("perfil_derecho")
+		elif direccion.y < 0:
+			$Sprite2D.play("caminar_atras")
+		elif direccion.y > 0:
+			$Sprite2D.play("caminar_frente")
+			
 		direccion = direccion.normalized()
+	else:
+		$Sprite2D.stop()
 
 	velocity = direccion * velocidad
 	move_and_slide()
@@ -91,12 +105,6 @@ func plantar_bomba() -> void:
 		var x_centrado = floor(global_position.x / 128.0) * 128.0 + 64.0
 		var y_centrado = floor(global_position.y / 128.0) * 128.0 + 64.0
 		nueva_bomba.global_position = Vector2(x_centrado, y_centrado)
-		
-		if textura_bomba:
-			if nueva_bomba.has_method("configurar_apariencia"):
-				nueva_bomba.configurar_apariencia(textura_bomba)
-			elif nueva_bomba.has_node("Sprite2D"):
-				nueva_bomba.get_node("Sprite2D").texture = textura_bomba
 		
 		nueva_bomba.poder_explosion = poder_explosion
 		nueva_bomba.jugador_propietario = self

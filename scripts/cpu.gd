@@ -4,6 +4,7 @@ class_name Cpu
 enum EstadoIA { IDLE, HUIR, LOOTEAR, FARMEAR, ATACAR }
 var estado_actual: EstadoIA = EstadoIA.IDLE
 
+@export var color_robot: Color = Color.WHITE
 var nivel: NivelMultiBase
 var astar: AStarGrid2D
 var camino_actual: Array[Vector2] = []
@@ -18,6 +19,9 @@ var radio_peligro: Array[Vector2i] = []
 func _ready() -> void:
 	super._ready()
 	
+	# El bot se pinta del color apenas nace
+	if has_node("Sprite2D"):
+		$Sprite2D.modulate = color_robot
 	await get_tree().create_timer(1.2).timeout
 	if get_parent() is NivelMultiBase:
 		nivel = get_parent() as NivelMultiBase
@@ -301,9 +305,22 @@ func ejecutar_movimiento() -> void:
 	if camino_actual.is_empty():
 		velocity = Vector2.ZERO
 		move_and_slide()
+		$Sprite2D.stop()
 		return
 
 	var direccion = global_position.direction_to(objetivo_posicion)
+
+	if abs(direccion.x) > abs(direccion.y):
+		if direccion.x < 0:
+			$Sprite2D.play("perfil_izquierdo")
+		else:
+			$Sprite2D.play("perfil_derecho")
+	else:
+		if direccion.y < 0:
+			$Sprite2D.play("caminar_atras")
+		else:
+			$Sprite2D.play("caminar_frente")
+
 	velocity = direccion * velocidad
 	move_and_slide()
 

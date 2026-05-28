@@ -8,3 +8,8 @@ tipo_bonificacion = "cargas"
 
 [node name="Sprite2D" parent="." index="0" unique_id=674625972]
 texture = ExtResource("2_8xlse")
+
+[node name="AnimatedSprite2D" parent="." index="3" unique_id=1551866488]
+animation = &"anim_velocidad"
+autoplay = "anim_velocidad"
+frame_progress = 0.0

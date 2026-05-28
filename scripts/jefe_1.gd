@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export_category("Estadísticas")
-@export var velocidad: float = 120.0 # Reducida ligeramente para sincronizar el "peso" físico
+@export var velocidad: float = 280.0
 @export var hp_maximo: int = 8
 @export var tiempo_entre_ataques: float = 1.0
 
@@ -22,9 +22,8 @@ func _ready() -> void:
 	hp_actual = hp_maximo
 	add_to_group("enemigos")
 	
-	# SOLUCIÓN ERROR 1: Amplificar el sonido base y quitarle atenuación extrema
-	sonido_pasos.volume_db = 5.0 # Sube los decibelios locales
-	sonido_pasos.max_distance = 4000.0 # Asegura que se escuche en todo tu plano procedural
+	sonido_pasos.volume_db = 5.0
+	sonido_pasos.max_distance = 4000.0
 	
 	var jugadores = get_tree().get_nodes_in_group("jugadores")
 	if jugadores.size() > 0:
@@ -44,23 +43,19 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 		return
 
-	# IA: Navegación hacia el jugador
 	nav_agent.target_position = jugador_objetivo.global_position
 	
 	var direccion = Vector2.ZERO
 	if not nav_agent.is_navigation_finished():
 		direccion = global_position.direction_to(nav_agent.get_next_path_position()).normalized()
 	
-	# Si la bandera es verdadera, el jefe camina con fuerza real
 	if direccion != Vector2.ZERO and aplicar_impulso_paso:
 		velocity = direccion * velocidad
 	else:
-		# Si no hay impulso, se frena en seco de forma inmediata
 		velocity = Vector2.ZERO
 		
 	move_and_slide()
 	
-	# Lógica de ataque a cajas
 	ajustar_direccion_rayo(velocity if velocity != Vector2.ZERO else direccion)
 	if puede_atacar and rayo_ataque.is_colliding():
 		var objeto_detectado = rayo_ataque.get_collider()
@@ -80,15 +75,20 @@ func ajustar_direccion_rayo(movimiento: Vector2) -> void:
 func ejecutar_ataque_caja(contenedor: Node2D) -> void:
 	esta_atacando = true
 	puede_atacar = false
-	sonido_pasos.stop() # Apaga los pasos inmediatamente al golpear
+	sonido_pasos.stop()
 	
 	var pos_rayo = rayo_ataque.target_position
 	sprite.play("ataque")
 	
-	if pos_rayo.x < 0:
+	# TRUCO DE ESCALA Y CENTRADO VISUAL
+	sprite.scale = Vector2(1.15, 1.15)
+	
+	if pos_rayo.x > 0:
 		sprite.flip_h = true
+		sprite.position.x = -15.0
 	else:
 		sprite.flip_h = false
+		sprite.position.x = 15.0
 		
 	if contenedor.has_method("recibir_dano"):
 		contenedor.recibir_dano(1) 
@@ -104,7 +104,11 @@ func ejecutar_ataque_caja(contenedor: Node2D) -> void:
 func _on_animation_finished() -> void:
 	if esta_atacando:
 		esta_atacando = false
-		sprite.flip_h = false # SOLUCIÓN ERROR 2: Limpiar el flip de ataque inmediatamente
+		sprite.flip_h = false
+		
+		# RESTAURAR AL ESTADO NORMAL DE CAMINATA
+		sprite.scale = Vector2(1.0, 1.0)
+		sprite.position = Vector2.ZERO
 
 func controlar_animacion(direccion: Vector2) -> void:
 	if direccion == Vector2.ZERO:
@@ -125,25 +129,18 @@ func controlar_animacion(direccion: Vector2) -> void:
 	sprite.pause() 
 	
 	if not sonido_pasos.playing:
-		aplicar_impulso_paso = true # Impulso inicial
+		aplicar_impulso_paso = true
 		sonido_pasos.play()
 
 func _on_paso_terminado() -> void:
 	if not esta_atacando and not esta_muerto:
-		# Avanzamos al siguiente frame de la animación manualmente
 		var total_frames = sprite.sprite_frames.get_frame_count(sprite.animation)
 		sprite.frame = (sprite.frame + 1) % total_frames
 		
 		if jugador_objetivo != null and not nav_agent.is_navigation_finished():
-			# 1. Activamos el movimiento físico
 			aplicar_impulso_paso = true 
 			sonido_pasos.play()
-			
-			# 2. EL TRUCO: Esperamos una fracción de segundo para que el cuerpo avance
-			# Puedes ajustar este '0.15' si quieres que el paso avance más largo o más corto
-			await get_tree().create_timer(0.15).timeout 
-			
-			# 3. Terminó el avance del paso, apagamos la fuerza física hasta el siguiente sonido
+			await get_tree().create_timer(0.3).timeout 
 			aplicar_impulso_paso = false 
 		else:
 			sprite.pause()
