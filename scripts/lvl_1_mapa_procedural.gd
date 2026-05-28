@@ -1,4 +1,4 @@
-extends MapaProcedural # Heredar lógica de tu compañero
+extends MapaProcedural
 
 # NUEVO: Declaramos la señal específica para tu nivel 1
 signal mapa_generado_lvl1

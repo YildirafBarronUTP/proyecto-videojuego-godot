@@ -4,13 +4,10 @@ extends Node2D
 @onready var musica_fondo: AudioStreamPlayer = AudioStreamPlayer.new()
 @onready var sonido_lava: AudioStreamPlayer = AudioStreamPlayer.new()
 
-# Referencia a la región de navegación
-@onready var nav_region: NavigationRegion2D = $NavigationRegion2D 
-
 func _ready() -> void:
 	print("Nivel 1 iniciado correctamente")
 	
-	# 1. Configurar audios
+	# 1. Configurar y reproducir audios
 	musica_fondo.stream = load("res://sounds/soundtrack/Nivel1/main_theme.wav")
 	musica_fondo.volume_db = -5.0
 	add_child(musica_fondo)
@@ -21,28 +18,22 @@ func _ready() -> void:
 	add_child(sonido_lava)
 	sonido_lava.play()
 	
-	if has_node("NavigationRegion2D/MapaProcedural"):
-		var mapa = $NavigationRegion2D/Lvl1MapaProcedural
-		print("Mapa detectado con éxito en la nueva ruta. Esperando señal...")
-		mapa.mapa_generado_lvl1.connect(_on_mapa_listo)
+	# 2. SOLUCIÓN AL ORDEN DE SEÑALES:
+	# Damos una breve espera de tiempo para asegurar que el mapa termine su bucle procedural
+	await get_tree().create_timer(0.1).timeout
+	
+	if has_node("lvl1_MapaProcedural"):
+		var mapa = $lvl1_MapaProcedural
+		print("Mapa detectado con éxito. Procediendo a instanciar al Jefe directamente...")
+		
+		# Esperamos un frame de procesamiento para que la matriz A* esté asentada
+		await get_tree().process_frame
+		spawnear_jefe(mapa)
 	else:
-		print("ERROR CRÍTICO: No se encontró el nodo MapaProcedural dentro de NavigationRegion2D")
-		# Plan de respaldo por si la ruta falla: spawnear al jefe de todas formas
-		await get_tree().create_timer(0.5).timeout
+		print("ERROR CRÍTICO: No se encontró el nodo lvl1_MapaProcedural en la raíz del nivel.")
 		spawnear_jefe(null)
 
-func _on_mapa_listo() -> void:
-	print("Señal 'mapa_generado_lvl1' recibida con éxito. Horneando navegación...")
-	if nav_region:
-		nav_region.bake_navigation_mesh(false) 
-	
-	# Esperamos un frame físico de Godot
-	await get_tree().process_frame
-	
-	var mapa = $NavigationRegion2D/MapaProcedural
-	spawnear_jefe(mapa)
-
-func spawnear_jefe(mapa: MapaProcedural) -> void:
+func spawnear_jefe(mapa: Node) -> void:
 	if escena_jefe:
 		var jefe = escena_jefe.instantiate()
 		
@@ -51,7 +42,7 @@ func spawnear_jefe(mapa: MapaProcedural) -> void:
 		var tam_celda = Vector2(128, 128)
 		
 		var desplaza = Vector2(384, 0) 
-		if mapa and mapa.desplazamiento_mapa != Vector2.ZERO:
+		if mapa and "desplazamiento_mapa" in mapa and mapa.desplazamiento_mapa != Vector2.ZERO:
 			desplaza = mapa.desplazamiento_mapa
 		
 		# Fórmula matemática de la cuadrícula procedural
@@ -72,4 +63,4 @@ func spawnear_jefe(mapa: MapaProcedural) -> void:
 			print("Fallback activo: Posicionando al jefe en coordenada fija segura.")
 
 		add_child(jefe)
-		print("¡Jefe reubicado con éxito! Spawn real en: ", jefe.global_position)
+		print("¡Jefe aparecido con éxito! Coordenadas reales en: ", jefe.global_position)
