@@ -202,7 +202,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mnpuo"]
-radius = 48.0
+radius = 52.0
 height = 106.0
 
 [node name="Jefe1" type="CharacterBody2D" unique_id=196049011]
@@ -212,20 +212,14 @@ script = ExtResource("1_hb51k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1355008262]
 sprite_frames = SubResource("SpriteFrames_m6utd")
-animation = &"walkUp"
-frame_progress = 0.06692402
+animation = &"ataque"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=102776337]
 position = Vector2(6, 37)
 shape = SubResource("CapsuleShape2D_mnpuo")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1966129240]
-path_desired_distance = 60.0
-target_desired_distance = 50.0
-
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1994976458]
-position = Vector2(2, -12)
-target_position = Vector2(0, 60)
+target_position = Vector2(0, 90)
 collision_mask = 2
 
 [node name="SonidoPasos" type="AudioStreamPlayer2D" parent="." unique_id=1189138420]
