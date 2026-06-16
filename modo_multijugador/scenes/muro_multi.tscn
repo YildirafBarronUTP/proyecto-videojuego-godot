@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dlvombuw7aqwv"]
+
+[ext_resource type="PackedScene" uid="uid://pxsqog84m8vp" path="res://scenes/entidades/objeto_indestructible_base.tscn" id="1_rc3b2"]
+[ext_resource type="Texture2D" uid="uid://dw4ckoq2a4ibi" path="res://modo_multijugador/assets/muro.png" id="2_sgxwm"]
+
+[node name="Muro" unique_id=2019699787 groups=["indestructible"] instance=ExtResource("1_rc3b2")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1924481150]
+texture = ExtResource("2_sgxwm")

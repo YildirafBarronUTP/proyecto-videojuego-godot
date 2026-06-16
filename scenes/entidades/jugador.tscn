@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://v6molrajqse4" path="res://scripts/jugador.gd" id="1_pesnq"]
 [ext_resource type="PackedScene" uid="uid://ioajrmpchrdl" path="res://scenes/entidades/carga.tscn" id="2_jmfal"]
-[ext_resource type="PackedScene" uid="uid://nbvo5avxvjpp" path="res://scenes/entidades/bombardeo.tscn" id="3_uxcw7"]
+[ext_resource type="PackedScene" uid="uid://nbvo5avxvjpp" path="res://modo_multijugador/scenes/bombardeo.tscn" id="3_uxcw7"]
 [ext_resource type="SpriteFrames" uid="uid://bhqi5ej611d3k" path="res://assets/animaciones_voltio.tres" id="4_uxcw7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jmfal"]

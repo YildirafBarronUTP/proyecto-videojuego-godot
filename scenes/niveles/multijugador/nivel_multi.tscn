@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://cy4suc3onf5vl"]
 
 [ext_resource type="PackedScene" uid="uid://csgs3s2ttjlxi" path="res://scenes/niveles/base/nivel_multi_base.tscn" id="1_2r3by"]
-[ext_resource type="Texture2D" uid="uid://bib5etuwo3u8b" path="res://assets/blue-s.png" id="2_0wsxe"]
+[ext_resource type="Texture2D" uid="uid://bib5etuwo3u8b" path="res://modo_multijugador/assets/blue-s.png" id="2_0wsxe"]
 [ext_resource type="PackedScene" uid="uid://c8i4qnmskycri" path="res://scenes/niveles/multijugador/mapa_procedural.tscn" id="2_vhdj0"]
-[ext_resource type="Texture2D" uid="uid://cin4k55rc8ov1" path="res://assets/red-s.png" id="3_ak1qn"]
-[ext_resource type="Texture2D" uid="uid://6wt63oun24ob" path="res://assets/green-s.png" id="4_sw7sj"]
-[ext_resource type="Texture2D" uid="uid://ud21mf7oo3m1" path="res://assets/purple-s.png" id="5_vhdj0"]
-[ext_resource type="Texture2D" uid="uid://826i5wyitdax" path="res://assets/blue_charge.png" id="6_5i48x"]
-[ext_resource type="Texture2D" uid="uid://p5mtebb1pvmh" path="res://assets/red_charge.png" id="7_lgkjn"]
-[ext_resource type="Texture2D" uid="uid://cy1ebig5oqqq2" path="res://assets/green_charge.png" id="8_cs056"]
-[ext_resource type="Texture2D" uid="uid://cud4fmtn7r2gv" path="res://assets/purple_charge.png" id="9_6vpah"]
+[ext_resource type="Texture2D" uid="uid://cin4k55rc8ov1" path="res://modo_multijugador/assets/red-s.png" id="3_ak1qn"]
+[ext_resource type="Texture2D" uid="uid://6wt63oun24ob" path="res://modo_multijugador/assets/green-s.png" id="4_sw7sj"]
+[ext_resource type="Texture2D" uid="uid://ud21mf7oo3m1" path="res://modo_multijugador/assets/purple-s.png" id="5_vhdj0"]
+[ext_resource type="Texture2D" uid="uid://826i5wyitdax" path="res://modo_multijugador/assets/blue_charge.png" id="6_5i48x"]
+[ext_resource type="Texture2D" uid="uid://p5mtebb1pvmh" path="res://modo_multijugador/assets/red_charge.png" id="7_lgkjn"]
+[ext_resource type="Texture2D" uid="uid://cy1ebig5oqqq2" path="res://modo_multijugador/assets/green_charge.png" id="8_cs056"]
+[ext_resource type="Texture2D" uid="uid://cud4fmtn7r2gv" path="res://modo_multijugador/assets/purple_charge.png" id="9_6vpah"]
 
 [node name="NivelMulti" unique_id=933823112 instance=ExtResource("1_2r3by")]
 texturas_jugadores = Array[Texture2D]([ExtResource("2_0wsxe"), ExtResource("3_ak1qn"), ExtResource("4_sw7sj"), ExtResource("5_vhdj0")])

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgrn1gm6o2uxd"]
 
 [ext_resource type="PackedScene" uid="uid://dxp5q4ky65b0y" path="res://scenes/entidades/bonificacion.tscn" id="1_ve7i0"]
-[ext_resource type="Texture2D" uid="uid://c7ytsf1vsffbs" path="res://assets/bono_rango.png" id="2_cde2u"]
+[ext_resource type="Texture2D" uid="uid://c7ytsf1vsffbs" path="res://modo_multijugador/assets/bono_rango.png" id="2_cde2u"]
 
 [node name="BonificacionRango" unique_id=706740754 instance=ExtResource("1_ve7i0")]
 
@@ -9,6 +9,5 @@
 texture = ExtResource("2_cde2u")
 
 [node name="AnimatedSprite2D" parent="." index="3" unique_id=1551866488]
-animation = &"anim_velocidad"
 autoplay = "anim_velocidad"
 frame_progress = 0.0

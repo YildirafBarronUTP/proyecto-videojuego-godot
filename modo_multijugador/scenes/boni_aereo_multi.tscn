@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bjusmfsrvkt5r"]
+
+[ext_resource type="PackedScene" uid="uid://dxp5q4ky65b0y" path="res://scenes/entidades/bonificacion.tscn" id="1_qnw1v"]
+[ext_resource type="Texture2D" uid="uid://cjasg52586sjy" path="res://modo_multijugador/assets/mira.png" id="2_borni"]
+
+[node name="BonificacionRango" unique_id=706740754 instance=ExtResource("1_qnw1v")]
+tipo_bonificacion = "aereo"
+
+[node name="Sprite2D" parent="." index="0" unique_id=674625972]
+texture = ExtResource("2_borni")

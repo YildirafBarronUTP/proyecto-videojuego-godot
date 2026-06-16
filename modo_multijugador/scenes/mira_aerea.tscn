@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://xjn6e3dvft1b"]
+
+[ext_resource type="Texture2D" uid="uid://cjasg52586sjy" path="res://modo_multijugador/assets/mira.png" id="1_x6rx6"]
+[ext_resource type="Script" uid="uid://bjl3geqiyay00" path="res://modo_multijugador/scripts/mira_aerea.gd" id="1_y1e4l"]
+
+[node name="MiraAerea" type="Node2D" unique_id=1193149893]
+script = ExtResource("1_y1e4l")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1883396260]
+texture = ExtResource("1_x6rx6")

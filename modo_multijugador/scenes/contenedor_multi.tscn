@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://calkxu1g5i3ce"]
+
+[ext_resource type="Script" uid="uid://hgjlvcjgexnu" path="res://scripts/contenedor.gd" id="1_1alt3"]
+[ext_resource type="PackedScene" uid="uid://dgrn1gm6o2uxd" path="res://scenes/entidades/bonificacion_rango.tscn" id="2_13k2o"]
+[ext_resource type="PackedScene" uid="uid://c7v4hqi46jlv3" path="res://scenes/entidades/bonificacion_velocidad.tscn" id="3_i0ifn"]
+[ext_resource type="PackedScene" uid="uid://bawpj7ylhlebx" path="res://scenes/entidades/bonificacion_cargas.tscn" id="4_8ycd8"]
+[ext_resource type="Texture2D" uid="uid://bsj0w6w8lfu22" path="res://modo_multijugador/assets/contenedor.png" id="5_uuvxw"]
+[ext_resource type="AudioStream" uid="uid://bxt2iaqdsj68g" path="res://sounds/sound effects/Contenedor_destruido.wav" id="6_o2l32"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paepi"]
+size = Vector2(128, 128)
+
+[node name="Contenedor" type="StaticBody2D" unique_id=824751243]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_1alt3")
+escena_rango = ExtResource("2_13k2o")
+escena_velocidad = ExtResource("3_i0ifn")
+escena_cargas = ExtResource("4_8ycd8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1384969945]
+texture = ExtResource("5_uuvxw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=752768977]
+shape = SubResource("RectangleShape2D_paepi")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1121023581]
+stream = ExtResource("6_o2l32")

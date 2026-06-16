@@ -1,0 +1,59 @@
+extends Area2D
+
+# Se añadieron las nuevas armas al listado desplegable del Inspector
+@export_enum("rango", "velocidad", "cargas", "aereo", "descarga") var tipo_bonificacion: String = "rango"
+@export var valor_bonificacion: float = 1.0
+
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite_animado: AnimatedSprite2D = $AnimatedSprite2D # ACÁ LLAMAMOS AL NUEVO NODO
+@onready var colision: CollisionShape2D = $CollisionShape2D
+@onready var sonido_recogida: AudioStreamPlayer2D = $SonidoRecogida
+
+var fue_recogido: bool = false
+
+func _ready() -> void:
+	add_to_group("bonificaciones")
+	body_entered.connect(_on_body_entered)
+	
+	# --- LA MAGIA ACTUALIZADA: Elegir la animación correcta ---
+	match tipo_bonificacion:
+		"cargas":
+			sprite.hide()
+			sprite_animado.show()
+			sprite_animado.play("anim_cargas")
+		"rango":
+			sprite.hide()
+			sprite_animado.show()
+			sprite_animado.play("anim_rango")
+		"velocidad":
+			sprite.hide()
+			sprite_animado.show()
+			sprite_animado.play("anim_velocidad")
+		_: 
+			# El guion bajo (_) agarra a cualquier otro ítem que aún
+			# sea una foto estática (ej. 'aereo' o 'descarga').
+			sprite.show()
+			sprite_animado.hide()
+
+func _on_body_entered(body: Node2D) -> void:
+	if fue_recogido:
+		return
+		
+	if body is CharacterBody2D and body.has_method("aplicar_bonificacion"):
+		fue_recogido = true
+		body.aplicar_bonificacion(tipo_bonificacion, valor_bonificacion)
+		
+		# Ocultamos los gráficos al recoger el ítem
+		if sprite:
+			sprite.hide()
+		if sprite_animado:
+			sprite_animado.hide()
+			
+		if colision:
+			colision.set_deferred("disabled", true)
+			
+		if sonido_recogida:
+			sonido_recogida.play()
+			await sonido_recogida.finished
+			
+		queue_free()

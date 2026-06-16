@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cy2vb21167qs1"]
+
+[ext_resource type="Script" uid="uid://v6molrajqse4" path="res://scripts/jugador.gd" id="1_kialf"]
+[ext_resource type="PackedScene" uid="uid://ioajrmpchrdl" path="res://scenes/entidades/carga.tscn" id="2_g5p8g"]
+[ext_resource type="PackedScene" uid="uid://nbvo5avxvjpp" path="res://modo_multijugador/scenes/bombardeo.tscn" id="3_ds5fy"]
+[ext_resource type="SpriteFrames" uid="uid://bhqi5ej611d3k" path="res://assets/animaciones_voltio.tres" id="4_y0epr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jmfal"]
+radius = 63.8
+
+[node name="Jugador" type="CharacterBody2D" unique_id=884006860]
+collision_layer = 4
+collision_mask = 59
+motion_mode = 1
+script = ExtResource("1_kialf")
+escena_bomba = ExtResource("2_g5p8g")
+escena_bombardeo = ExtResource("3_ds5fy")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1458618566]
+position = Vector2(-1.0000153, -2.0000305)
+scale = Vector2(0.2841797, 0.33691406)
+sprite_frames = ExtResource("4_y0epr")
+animation = &"caminar_frente"
+frame_progress = 0.7964216
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1781811736]
+position = Vector2(1, 3)
+shape = SubResource("CircleShape2D_jmfal")

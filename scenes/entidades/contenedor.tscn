@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chy3tjholx73r"]
 
-[ext_resource type="Texture2D" uid="uid://bsj0w6w8lfu22" path="res://assets/contenedor.png" id="1_a76c4"]
+[ext_resource type="Texture2D" uid="uid://bsj0w6w8lfu22" path="res://modo_multijugador/assets/contenedor.png" id="1_a76c4"]
 [ext_resource type="Script" uid="uid://hgjlvcjgexnu" path="res://scripts/contenedor.gd" id="1_vafj4"]
 [ext_resource type="PackedScene" uid="uid://dgrn1gm6o2uxd" path="res://scenes/entidades/bonificacion_rango.tscn" id="2_vmu2o"]
 [ext_resource type="PackedScene" uid="uid://c7v4hqi46jlv3" path="res://scenes/entidades/bonificacion_velocidad.tscn" id="3_xubdh"]
