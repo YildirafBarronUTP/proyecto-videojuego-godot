@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://5t1h3t4t67ss"]
+
+[ext_resource type="Script" uid="uid://dawa44v1xj4gw" path="res://scripts/objeto_indestructible_base.gd" id="1_cml8s"]
+[ext_resource type="Texture2D" uid="uid://d0rltidyomk8r" path="res://assets/lvl3_pilar.png" id="2_1ofei"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_854di"]
+size = Vector2(124, 124)
+
+[node name="Lvl3Pilar" type="StaticBody2D" unique_id=242478907 groups=["indestructible"]]
+collision_mask = 0
+script = ExtResource("1_cml8s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1680085230]
+texture = ExtResource("2_1ofei")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=115170231]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_854di")

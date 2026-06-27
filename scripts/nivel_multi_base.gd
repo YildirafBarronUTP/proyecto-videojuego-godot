@@ -193,3 +193,4 @@ func _on_btn_reiniciar_pressed() -> void:
 func volver_al_menu_principal() -> void:
 	juego_terminado = true 
 	get_tree().change_scene_to_file("res://scenes/ui/menu_principal.tscn")
+	

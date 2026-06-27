@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dbrxwxmx1pywb"]
+
+[ext_resource type="Script" uid="uid://d3emchounxx18" path="res://scripts/selector_niveles.gd" id="1_3do3m"]
+
+[node name="SelectorNiveles" type="Control" unique_id=1244107782]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3do3m")
+
+[node name="Panel" type="Panel" parent="." unique_id=1564385370]
+layout_mode = 0
+offset_left = 377.0
+offset_top = 149.0
+offset_right = 761.0
+offset_bottom = 449.0
+
+[node name="Button" type="Button" parent="Panel" unique_id=552871062]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 51.0
+offset_right = 216.0
+offset_bottom = 82.0
+text = "NIVEL 1"
+
+[node name="Button2" type="Button" parent="Panel" unique_id=483226592]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 115.0
+offset_right = 217.0
+offset_bottom = 146.0
+text = "NIVEL 2
+"
+
+[node name="Button3" type="Button" parent="Panel" unique_id=1876828730]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 181.0
+offset_right = 216.0
+offset_bottom = 212.0
+text = "NIVEL 3"
+
+[node name="BtnVolver" type="Button" parent="Panel" unique_id=748292205]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 246.0
+offset_right = 314.0
+offset_bottom = 277.0
+text = "REGRESAR AL MENU PRINCIPAL"

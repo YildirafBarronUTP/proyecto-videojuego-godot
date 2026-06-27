@@ -17,3 +17,9 @@ func _ready() -> void:
 	cortocircuito.volume_db = -15.0 # para que no opaque la música
 	add_child(cortocircuito)
 	cortocircuito.play()
+
+# Regresar al menu con la tecla ESC
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("volver_menu"):
+		print("Nivel: Regresando al Selector de Niveles...")
+		get_tree().change_scene_to_file("res://scenes/ui/SelectorNiveles.tscn")

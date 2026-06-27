@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/niveles/nivel1/nivel_1.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/SelectorNiveles.tscn")
 
 func _on_button_2_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/ui/lobby.tscn")

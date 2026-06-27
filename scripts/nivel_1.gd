@@ -64,3 +64,9 @@ func spawnear_jefe(mapa: Node) -> void:
 
 		add_child(jefe)
 		print("¡Jefe aparecido con éxito! Coordenadas reales en: ", jefe.global_position)
+		
+# Regresar al menu con la tecla ESC
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("volver_menu"):
+		print("Nivel: Regresando al Selector de Niveles...")
+		get_tree().change_scene_to_file("res://scenes/ui/SelectorNiveles.tscn")
