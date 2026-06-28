@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://qdte1vt4tvcx"]
+
+[ext_resource type="Script" uid="uid://drjo3p3he674" path="res://scripts/boss_centinela.gd" id="1_11u27"]
+[ext_resource type="Texture2D" uid="uid://6wt63oun24ob" path="res://modo_multijugador/assets/green-s.png" id="2_m1ojf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhnjq"]
+radius = 63.8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xayga"]
+radius = 65.0
+
+[node name="BossCentinela" type="CharacterBody2D" unique_id=1613143891]
+collision_layer = 256
+collision_mask = 11
+script = ExtResource("1_11u27")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1850258458]
+position = Vector2(1, 4)
+scale = Vector2(1.21875, 1.25)
+texture = ExtResource("2_m1ojf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1428168633]
+shape = SubResource("CircleShape2D_bhnjq")
+
+[node name="TimerInvulnerabilidad" type="Timer" parent="." unique_id=2088389036]
+
+[node name="TimerSenalizacion" type="Timer" parent="." unique_id=814150081]
+
+[node name="TimerAturdimiento" type="Timer" parent="." unique_id=1645103496]
+
+[node name="HitboxCarga" type="Area2D" parent="." unique_id=1270674949]
+collision_layer = 0
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxCarga" unique_id=1917628180]
+shape = SubResource("CircleShape2D_xayga")
+
+[node name="Sensores" type="Node2D" parent="." unique_id=1180028938]
+
+[node name="RayoNorte" type="RayCast2D" parent="Sensores" unique_id=424200498]
+target_position = Vector2(0, -2000)
+collision_mask = 5
+
+[node name="RayoSur" type="RayCast2D" parent="Sensores" unique_id=181034172]
+target_position = Vector2(0, 2000)
+collision_mask = 5
+
+[node name="RayoEste" type="RayCast2D" parent="Sensores" unique_id=1371676790]
+target_position = Vector2(2000, 0)
+collision_mask = 5
+
+[node name="RayoOeste" type="RayCast2D" parent="Sensores" unique_id=1372100131]
+target_position = Vector2(-2000, 0)
+collision_mask = 5
