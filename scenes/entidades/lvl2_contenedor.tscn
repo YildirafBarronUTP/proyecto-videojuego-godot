@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6j6ro"]
 size = Vector2(124, 125)
 
-[node name="Lvl2Contenedor" type="StaticBody2D" unique_id=1475835155]
+[node name="Lvl2Contenedor" type="StaticBody2D" unique_id=1475835155 groups=["contenedores"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_5l1nv")
