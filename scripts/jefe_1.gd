@@ -5,6 +5,11 @@ class_name JefeNivel1
 @export var hp_maximo: int = 8
 @export var tiempo_entre_ataques: float = 1.0
 
+@export_category("Ataque Especial")
+@export var tiempo_recarga_especial: float = 7.0 # Cada cuántos segundos puede lanzar la cruz
+var timer_ataque_especial: float = 3.0 # Tiempo inicial para el primer ataque tras spawnear
+
+@export var escena_fuego_jefe: PackedScene
 @onready var sonido_pasos: AudioStreamPlayer2D = $SonidoPasos
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var colision: CollisionShape2D = $CollisionShape2D
@@ -27,7 +32,6 @@ var direccion_pulso_actual: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	add_to_group("enemigos")
 	
-	# Usamos las variables heredadas del padre Jugador/Cpu
 	velocidad = 280.0
 	vidas = hp_maximo
 	
@@ -63,6 +67,9 @@ func _ready() -> void:
 # --- SOBREESCRITURA DE MÉTODOS DEL PADRE PARA DESACOPLAR 'NIVEL' ---
 
 func tomar_decision() -> void:
+	# Si ya está atacando, bloqueamos cualquier cambio de estado o nueva ruta
+	if esta_atacando: return
+
 	var mi_celda = pos_a_celda(global_position)
 	
 	if mi_celda in radio_peligro:
@@ -298,33 +305,62 @@ func actualizar_malla_obstaculos_procedurales(mapa: Node) -> void:
 				astar.set_point_solid(Vector2i(x, y), true)
 
 func _physics_process(delta: float) -> void:
-	if esta_muerto or vidas <= 0 or esta_atacando:
+	if esta_muerto or vidas <= 0:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
 
-	# 1. EJECUTAR EL CEREBRO DE LA IA
-	if astar != null and get_parent() != null:
-		timer_decision -= delta
-		if timer_decision <= 0:
-			actualizar_mapa_peligro()
-			tomar_decision()
-			timer_decision = tiempo_reaccion + randf_range(-0.02, 0.05)
+	# Si está atacando, congelamos el movimiento pero alertamos si se queda atrapado
+	if esta_atacando:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 
-	# 2. MOVIMIENTO FÍSICO POR IMPULSOS SECUENCIALES (Con Anti-Atasco de precisión)
+	# 1. EJECUTAR EL CEREBRO DE LA IA Y TEMPORIZADOR ESPECIAL
+	if not esta_muerto and vidas > 0 and not esta_atacando:
+		# Reducimos el tiempo de recarga del ataque especial
+		if timer_ataque_especial > 0:
+			timer_ataque_especial -= delta
+		
+		# --- ALERTA DE SEGUIMIENTO DEL TEMPORIZADOR ---
+		# Descomenta la siguiente línea si quieres ver el conteo frame a frame en consola:
+		# print("Jefe: Tiempo para especial: ", timer_ataque_especial, " | Camino vacío: ", camino_actual.is_empty())
+		
+		# ¡Mecánica Especial! Si el temporizador llega a 0, lanza el ataque en cruz inmediatamente
+		if timer_ataque_especial <= 0:
+			if not puede_atacar:
+				# Si no puede actuar (por ejemplo, está herido), esperamos un frame sin congelar
+				return 
+			else:
+				print("🚨 ¡ALERTA DE DISPARO! Forzando freno de zancada para lanzar ataqueFuego.")
+				
+				# REINICIO Y LIMPIEZA INMEDIATA:
+				timer_ataque_especial = tiempo_recarga_especial # Reiniciamos la recarga
+				camino_actual.clear()                           # Vaciamos la ruta para que se detenga
+				celda_objetivo_final = Vector2i(-1, -1)
+				
+				alinear_al_centro()                             # Lo cuadramos perfecto en la baldosa (128x128)
+				ejecutar_ataque_suelo()                         # Iniciamos los 9 frames de animación
+				return # Cortamos el frame aquí para que empiece limpio
+
+		if astar != null and get_parent() != null:
+			timer_decision -= delta
+			if timer_decision <= 0:
+				actualizar_mapa_peligro()
+				tomar_decision()
+				timer_decision = tiempo_reaccion + randf_range(-0.02, 0.05)
+
+	# 2. MOVIMIENTO FÍSICO POR IMPULSOS SECUENCIALES
 	if not camino_actual.is_empty():
 		direccion_pulso_actual = global_position.direction_to(objetivo_posicion).normalized()
 		
-		# DISPARADOR SECUENCIAL AUTOMÁTICO
 		if not sonido_pasos.playing and timer_impulso <= 0.0:
 			avanzar_secuencia_paso()
 
-		# Aplicamos velocidad estable mientras el pulso de tiempo esté activo
 		if timer_impulso > 0.0:
 			timer_impulso -= delta
 			velocity = direccion_pulso_actual * velocidad
 			
-			# --- CORRECCIÓN INTEGRAL ANTI-ATASCO EN PULSOS ---
 			if global_position.distance_to(ultima_posicion_registro) < 0.3:
 				tiempo_atascado += delta
 				if tiempo_atascado >= limite_tiempo_atascado:
@@ -372,6 +408,19 @@ func _physics_process(delta: float) -> void:
 	if not esta_atacando and camino_actual.is_empty():
 		sprite.pause()
 
+	# --- UBICACIÓN DE DETECCIÓN CONTINUA ---
+	var bonificaciones_activas = get_tree().get_nodes_in_group("bonificaciones")
+	for item in bonificaciones_activas:
+		if global_position.distance_to(item.global_position) < 70.0:
+			print("¡Jefe tocó bonificación en movimiento continuo! Eliminando objeto.")
+			item.queue_free()
+			
+	var lista_jugadores = get_tree().get_nodes_in_group("jugadores")
+	for jugador in lista_jugadores:
+		if global_position.distance_to(jugador.global_position) < 75.0:
+			if jugador.has_method("recibir_dano"):
+				jugador.recibir_dano()
+
 # --- CONTROLADOR CENTRAL DE LA SECUENCIA CONSECUTIVA ---
 
 func avanzar_secuencia_paso() -> void:
@@ -417,15 +466,11 @@ func ejecutar_ataque_caja(contenedor: Node2D) -> void:
 	var pos_rayo = rayo_ataque.target_position
 	sprite.play("ataque")
 	
-	# TRUCO DE ESCALA Y CENTRADO VISUAL
-	sprite.scale = Vector2(1.15, 1.15)
-	
+	# --- CORRECCIÓN: Eliminamos sprite.scale y sprite.position.x ---
 	if pos_rayo.x > 0:
 		sprite.flip_h = true
-		sprite.position.x = -15.0
 	else:
 		sprite.flip_h = false
-		sprite.position.x = 15.0
 		
 	if contenedor.has_method("recibir_dano"):
 		contenedor.recibir_dano(1)
@@ -437,14 +482,13 @@ func ejecutar_ataque_caja(contenedor: Node2D) -> void:
 
 	await get_tree().create_timer(tiempo_entre_ataques).timeout
 	puede_atacar = true
+	
+
 
 func _on_animation_finished() -> void:
 	if esta_atacando:
 		esta_atacando = false
 		sprite.flip_h = false
-		
-		# RESTAURAR AL ESTADO NORMAL DE CAMINATA
-		sprite.scale = Vector2(1.0, 1.0)
 		sprite.position = Vector2.ZERO
 
 func recibir_dano(cantidad: int = 1) -> void:
@@ -483,3 +527,88 @@ func celda_a_pos(celda: Vector2i) -> Vector2:
 		var offset_y = -((13 * 128) / 2.0) + (128 / 2.0) + mapa.desplazamiento_mapa.y
 		return Vector2(offset_x + (celda.x * 128), offset_y + (celda.y * 128))
 	return Vector2.ZERO
+	
+# Ataque especial de fuego en cruz
+func ejecutar_ataque_suelo() -> void:
+	if not puede_atacar or esta_muerto: return
+	
+	print("🎬 Animación: Iniciando reproducción de 'ataqueFuego'...")
+	esta_atacando = true
+	puede_atacar = false
+	sonido_pasos.stop()
+	timer_impulso = 0.0
+	velocity = Vector2.ZERO
+	
+	camino_actual.clear()
+	celda_objetivo_final = Vector2i(-1, -1)
+	
+	sprite.play("ataqueFuego") 
+	
+	await sprite.animation_finished
+	print("💥 ¡GOLPE EN EL SUELO! Fin de la animación detectado correctamente.")
+	
+	propagar_fuego_en_cruz()
+	
+	esta_atacando = false
+	
+	await get_tree().create_timer(tiempo_entre_ataques).timeout
+	puede_atacar = true
+	print("✅ Fin del enfriamiento. El Jefe puede volver a actuar.")
+	
+	alinear_al_centro()
+	tomar_decision()
+
+func propagar_fuego_en_cruz() -> void:
+	if escena_fuego_jefe == null:
+		print("Error Jefe: No has asignado la escena_fuego_jefe en el Inspector.")
+		return
+		
+	var celda_origen = pos_a_celda(global_position)
+	
+	# 1. Fuego en la base del jefe
+	var fuego_centro = escena_fuego_jefe.instantiate()
+	fuego_centro.global_position = celda_a_pos(celda_origen)
+	get_parent().add_child(fuego_centro)
+	
+	var direcciones = [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
+	var alcance_maximo = 6 
+	
+	for dir in direcciones:
+		for i in range(1, alcance_maximo + 1):
+			var celda_objetivo = celda_origen + (dir * i)
+			
+			if celda_objetivo.x >= 0 and celda_objetivo.x < 15 and celda_objetivo.y >= 0 and celda_objetivo.y < 13:
+				
+				if astar.is_point_solid(celda_objetivo):
+					var pos_mundo_celda = celda_a_pos(celda_objetivo)
+					var query = PhysicsPointQueryParameters2D.new()
+					query.position = pos_mundo_celda
+					
+					# Apuntamos exactamente a la Capa 2 (Destructibles) que usa tu proyecto
+					query.collision_mask = 2 
+					
+					var colisiones = get_world_2d().direct_space_state.intersect_point(query)
+					var es_contenedor = false
+					
+					for col in colisiones:
+						var objeto = col.collider
+						if objeto and (objeto.is_in_group("contenedores") or objeto.has_method("generar_bonificacion") or "hp" in objeto):
+							es_contenedor = true
+							break
+					
+					if es_contenedor:
+						# Si es una caja, instanciamos el fuego sobre ella para que su script Area2D la rompa
+						var fuego = escena_fuego_jefe.instantiate()
+						fuego.global_position = pos_mundo_celda
+						get_parent().add_child(fuego)
+						break # El fuego impacta la caja y se detiene en esa celda
+					else:
+						# No es capa 2, es un pilar indestructible fijo. Se corta la línea sin instanciar fuego.
+						break
+				
+				# Celda vacía: el fuego corre libremente
+				var fuego = escena_fuego_jefe.instantiate()
+				fuego.global_position = celda_a_pos(celda_objetivo)
+				get_parent().add_child(fuego)
+			else:
+				break

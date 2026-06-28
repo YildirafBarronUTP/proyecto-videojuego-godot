@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://breq3ie60kyjq"]
+
+[ext_resource type="Script" uid="uid://dayqsdpxna83u" path="res://scripts/jefe_1_fuego.gd" id="1_c0b6o"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_havy4"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0b6o"]
+size = Vector2(90, 90)
+
+[node name="Jefe1Fuego" type="Area2D" unique_id=387147840]
+collision_layer = 16
+collision_mask = 12
+script = ExtResource("1_c0b6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1470574004]
+modulate = Color(0.94509804, 1, 0.019607844, 0.4627451)
+texture = SubResource("PlaceholderTexture2D_havy4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1121409304]
+shape = SubResource("RectangleShape2D_c0b6o")
+
+[node name="Timer" type="Timer" parent="." unique_id=1184701397]
+wait_time = 5.0
