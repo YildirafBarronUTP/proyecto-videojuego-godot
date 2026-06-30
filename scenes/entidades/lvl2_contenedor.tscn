@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cf228kukkn7l1"]
 
-[ext_resource type="Script" uid="uid://cqhyosqvlklj5" path="res://scripts/lvl_2_contenedor.gd" id="1_5l1nv"]
+[ext_resource type="Script" path="res://scripts/lvl_2_contenedor.gd" id="1_5l1nv"]
 [ext_resource type="Texture2D" uid="uid://dcp4cg3cvt3og" path="res://assets/lvl2_contenedor.png" id="2_7qo7l"]
 [ext_resource type="PackedScene" uid="uid://dgrn1gm6o2uxd" path="res://scenes/entidades/bonificacion_rango.tscn" id="2_c1s3y"]
 [ext_resource type="PackedScene" uid="uid://c7v4hqi46jlv3" path="res://scenes/entidades/bonificacion_velocidad.tscn" id="3_kjq73"]
@@ -11,7 +11,6 @@
 size = Vector2(124, 125)
 
 [node name="Lvl2Contenedor" type="StaticBody2D" unique_id=1475835155 groups=["contenedores"]]
-collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_5l1nv")
 escena_rango = ExtResource("2_c1s3y")

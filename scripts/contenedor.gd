@@ -14,6 +14,7 @@ func _ready() -> void:
 	add_to_group("contenedores")
 
 func recibir_dano(cantidad: int) -> void:
+	print("¡El contenedor recibió el mensaje de daño del tanque!")
 	hp -= cantidad
 	if hp <= 0:
 		destruir()

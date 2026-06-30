@@ -1,89 +1,64 @@
-extends NivelMultiBase
+extends Node2D
 
-@export var escena_boss: PackedScene
+@export var escena_jefe: PackedScene = preload("res://scenes/entidades/boss_alfil.tscn")
+@onready var musica_fondo: AudioStreamPlayer = AudioStreamPlayer.new()
+@onready var sonido_ambiente: AudioStreamPlayer = AudioStreamPlayer.new()
 
-# 1. BLOQUEAMOS AL PADRE Y TOMAMOS EL CONTROL
 func _ready() -> void:
-	if super.has_method("_ready"):
-		super._ready()
+	print("Nivel 2 iniciado, ¡preparen la artillería!")
 	
-	# Apagamos el process del padre para que el "Árbitro" no rompa el nivel
-	set_process(false) 
+	# Asegúrate de que este archivo sí exista
+	var stream_musica = load("res://sounds/soundtrack/Nivel2/main_theme.wav")
+	if stream_musica:
+		musica_fondo.stream = stream_musica 
+		musica_fondo.volume_db = -5.0
+		add_child(musica_fondo)
+		musica_fondo.play()
 	
-	# Llamamos a nuestro propio sistema de spawn un frame después
-	call_deferred("iniciar_nivel_pve")
-
-func generar_jugadores() -> void:
-	pass # Silenciamos la instanciación vieja del padre
-
-# 2. NUESTRO SISTEMA DE SPAWN PVE
-func iniciar_nivel_pve() -> void:
-	print("\n=== [LOG NIVEL 2] INICIANDO PROCESO DE SPAWN PVE ===")
+	# Asegúrate de que este archivo sí exista
+	var stream_ambiente = load("res://sounds/soundtrack/Nivel2/cortocircuito.wav")
+	if stream_ambiente:
+		sonido_ambiente.stream = stream_ambiente 
+		sonido_ambiente.volume_db = -17.0
+		add_child(sonido_ambiente)
+		sonido_ambiente.play()
 	
-	var mapa = $MapaProcedural
-	if mapa == null:
-		print("❌ [LOG ERROR] No se encontró el nodo '$MapaProcedural'.")
-		return
-		
-	var calcular_pos = func(x: int, y: int) -> Vector2:
-		var offset_x = -((mapa.columnas * mapa.celda_size.x) / 2.0) + (mapa.celda_size.x / 2.0) + mapa.desplazamiento_mapa.x
-		var offset_y = -((mapa.filas * mapa.celda_size.y) / 2.0) + (mapa.celda_size.y / 2.0) + mapa.desplazamiento_mapa.y
-		var compensacion_pivote = mapa.celda_size / 2.0
-		return Vector2(offset_x + (x * mapa.celda_size.x), offset_y + (y * mapa.celda_size.y)) + compensacion_pivote
-
-	if escena_humano != null:
-		var nuevo_personaje = escena_humano.instantiate()
-		nuevo_personaje.id_jugador = 1
-		nuevo_personaje.global_position = calcular_pos.call(1, 1)
-		add_child(nuevo_personaje)
-		print("👤 [LOG JUGADOR] Instanciado en celda (1,1). Posición: ", nuevo_personaje.global_position)
+	await get_tree().create_timer(0.1).timeout
+	
+	if has_node("MapaProcedural"): 
+		var mapa = $MapaProcedural
+		print("Mapa detectado. Spawneando al Tanque Alfil...")
+		await get_tree().process_frame
+		spawnear_jefe(mapa)
 	else:
-		print("❌ [LOG ERROR] Escena Humano es NULL.")
+		print("ERROR CRÍTICO: No se encontró el nodo MapaProcedural.")
+		spawnear_jefe(null)
 
-	if escena_boss != null:
-		var c_max = mapa.columnas
-		var f_max = mapa.filas
-
-		var jefe1 = escena_boss.instantiate()
-		jefe1.global_position = calcular_pos.call(c_max - 2, f_max - 2)
-		add_child(jefe1)
-		jefe1.tree_exited.connect(_on_jugador_eliminado) 
+func spawnear_jefe(mapa: Node) -> void:
+	if escena_jefe:
+		var jefe = escena_jefe.instantiate()
+		var cols = 15
+		var fils = 13
+		var tam_celda = Vector2(128, 128)
 		
-		var jefe2 = escena_boss.instantiate()
-		jefe2.global_position = calcular_pos.call(c_max - 3, f_max - 2)
-		add_child(jefe2)
-		jefe2.tree_exited.connect(_on_jugador_eliminado)
+		var desplaza = Vector2.ZERO 
+		if mapa and "desplazamiento_mapa" in mapa:
+			desplaza = mapa.desplazamiento_mapa
 		
-		var jefe3 = escena_boss.instantiate()
-		jefe3.global_position = calcular_pos.call(c_max - 2, f_max - 3)
-		add_child(jefe3)
-		jefe3.tree_exited.connect(_on_jugador_eliminado)
-		print("🤖 [LOG BOSS] 3 Jefes Centinelas instanciados correctamente.")
-	else:
-		print("❌ [LOG ERROR] 'Escena Boss' está vacía en el Inspector.")
-
-	partida_iniciada = true
-	juego_terminado = false
-	set_process(true) # Encendemos nuestro propio bucle
-	print("=== [LOG NIVEL 2] SPAWN TERMINADO ===\n")
-
-# 3. NUESTRO BUCLE DE VICTORIA/DERROTA
-func _process(_delta: float) -> void:
-	if not partida_iniciada or juego_terminado:
-		return
+		var offset_x = -((cols * tam_celda.x) / 2.0) + (tam_celda.x / 2.0) + desplaza.x
+		var offset_y = -((fils * tam_celda.y) / 2.0) + (tam_celda.y / 2.0) + desplaza.y
+		var compensacion_pivote = tam_celda / 2.0
 		
-	var jugadores_vivos = get_tree().get_nodes_in_group("jugadores")
-	var jefes_vivos = get_tree().get_nodes_in_group("jefes")
-	
-	if jugadores_vivos.size() == 0:
-		juego_terminado = true
-		mostrar_pantalla_final("¡PERDISTE!")
-		set_process(false)
-	elif jefes_vivos.size() == 0:
-		juego_terminado = true
-		mostrar_pantalla_final("¡NIVEL COMPLETADO!")
-		set_process(false)
+		var destino_x = cols - 2
+		var destino_y = fils - 2
+		
+		jefe.global_position = Vector2(
+			offset_x + (destino_x * tam_celda.x), 
+			offset_y + (destino_y * tam_celda.y)
+		) + compensacion_pivote
+
+		add_child(jefe)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel") or (event is InputEventKey and event.keycode == KEY_ESCAPE and event.pressed):
-		volver_al_menu_principal()
+	if event.is_action_pressed("volver_menu"):
+		get_tree().change_scene_to_file("res://scenes/ui/SelectorNiveles.tscn")

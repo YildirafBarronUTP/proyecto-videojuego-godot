@@ -67,7 +67,7 @@ func _physics_process(_delta: float) -> void:
 		elif direccion.x > 0:
 			$Sprite2D.play("perfil_derecho")
 		elif direccion.y < 0:
-			$Sprite2D.play("caminar_atras")
+			$Sprite2D.play("caminar_atrás")
 		elif direccion.y > 0:
 			$Sprite2D.play("caminar_frente")
 			
@@ -204,3 +204,19 @@ func aplicar_bonificacion(tipo: String, valor: float) -> void:
 		"aereo": 
 			municion_aereo += 1
 			print("J", id_jugador, " obtuvo Ataque Aéreo. Munición: ", municion_aereo)
+
+# Pega esto al final de tu script de jugador
+# Si ya tienes una variable de vida, úsala y borra esta línea.
+
+func activar_efecto_dano() -> void:
+	# Esto no afecta el movimiento ni tus otras funciones, solo parpadea
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color.RED, 0.1)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
+	tween.set_loops(3)
+
+func _readyy() -> void:
+	if is_in_group("jugadores"):
+		print("¡El jugador está correctamente configurado en el grupo 'jugadores'!")
+	else:
+			print("¡OJO! Algo salió mal, no estoy en el grupo.")

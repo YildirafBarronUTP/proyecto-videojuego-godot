@@ -1,27 +1,31 @@
 [gd_scene format=3 uid="uid://bomfoai8kuacj"]
 
 [ext_resource type="Script" uid="uid://k36xhdj6dh5y" path="res://scripts/nivel_2.gd" id="1_agofm"]
-[ext_resource type="PackedScene" uid="uid://csgs3s2ttjlxi" path="res://scenes/niveles/base/nivel_multi_base.tscn" id="1_l6gx6"]
 [ext_resource type="PackedScene" uid="uid://c8i4qnmskycri" path="res://scenes/niveles/multijugador/mapa_procedural.tscn" id="2_nc21b"]
-[ext_resource type="Texture2D" uid="uid://bib5etuwo3u8b" path="res://modo_multijugador/assets/blue-s.png" id="3_axy6k"]
+[ext_resource type="PackedScene" uid="uid://dp33oq5rjfafs" path="res://scenes/entidades/jugador.tscn" id="3_4vimu"]
 [ext_resource type="PackedScene" uid="uid://c2ak7jkrauo20" path="res://scenes/entidades/lvl2_muro.tscn" id="3_bguku"]
 [ext_resource type="Script" uid="uid://ciejqs0w85ijd" path="res://scripts/mapa_nivel_2.gd" id="3_nc21b"]
-[ext_resource type="PackedScene" uid="uid://qdte1vt4tvcx" path="res://scenes/entidades/boss_centinela.tscn" id="3_rux64"]
 [ext_resource type="PackedScene" uid="uid://cs250vnoqralq" path="res://scenes/entidades/lvl2_pilar.tscn" id="4_h40ld"]
-[ext_resource type="Texture2D" uid="uid://826i5wyitdax" path="res://modo_multijugador/assets/blue_charge.png" id="4_rux64"]
 [ext_resource type="PackedScene" uid="uid://cf228kukkn7l1" path="res://scenes/entidades/lvl2_contenedor.tscn" id="5_axy6k"]
+[ext_resource type="Texture2D" uid="uid://crogmvldaobp3" path="res://assets/suelo 2.png" id="11_4vimu"]
 
-[node name="NivelMulti" unique_id=933823112 instance=ExtResource("1_l6gx6")]
+[node name="Nivel2" type="Node2D" unique_id=933823112]
 script = ExtResource("1_agofm")
-escena_boss = ExtResource("3_rux64")
-escena_cpu = null
-texturas_jugadores = Array[Texture2D]([ExtResource("3_axy6k")])
-texturas_bombas = Array[Texture2D]([ExtResource("4_rux64")])
-playlist_arena = Array[AudioStream]([])
 
-[node name="MapaProcedural" parent="." index="0" unique_id=1964763230 instance=ExtResource("2_nc21b")]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1412242207]
+position = Vector2(443.6612, 45.500008)
+scale = Vector2(0.8763073, 0.75927734)
+texture = ExtResource("11_4vimu")
+
+[node name="MapaProcedural" parent="." unique_id=1964763230 instance=ExtResource("2_nc21b")]
 script = ExtResource("3_nc21b")
 escena_muro = ExtResource("3_bguku")
 escena_pilar = ExtResource("4_h40ld")
 escena_contenedor = ExtResource("5_axy6k")
 probabilidad_contenedor = 0.63
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=500627136]
+zoom = Vector2(0.4, 0.4)
+
+[node name="Jugador" parent="." unique_id=884006860 instance=ExtResource("3_4vimu")]
+position = Vector2(-324, -661)
