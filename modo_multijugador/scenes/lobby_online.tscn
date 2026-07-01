@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://mu215pr4oo3g"]
+
+[ext_resource type="Script" uid="uid://bprl35lybmv2f" path="res://modo_multijugador/scripts/lobby_online.gd" id="1_jfsi3"]
+
+[node name="LobbyOnline" type="Control" unique_id=1214057168]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_jfsi3")
+
+[node name="LabelEstado" type="Label" parent="." unique_id=1729200100]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 637.0
+offset_right = 264.0
+offset_bottom = 660.0
+text = "Esperando jugadores..."
+
+[node name="BtnEmpezar" type="Button" parent="." unique_id=2025871000]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 459.0
+offset_right = 428.0
+offset_bottom = 490.0
+disabled = true
+text = "Empezar Partida"
+
+[node name="BtnSalir" type="Button" parent="." unique_id=884027334]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 458.0
+offset_right = 858.0
+offset_bottom = 489.0
+text = "Salir de la Sala"

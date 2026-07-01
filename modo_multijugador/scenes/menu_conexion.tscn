@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c1jdwxj34cvwg"]
+
+[ext_resource type="Script" uid="uid://dt8cyr5ps7dpj" path="res://modo_multijugador/scripts/menu_conexion.gd" id="1_bkcr5"]
+
+[node name="MenuConexion" type="Control" unique_id=599501356]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bkcr5")
+
+[node name="BtnCrearSala" type="Button" parent="." unique_id=198176147]
+layout_mode = 0
+offset_left = 657.0
+offset_top = 105.0
+offset_right = 794.0
+offset_bottom = 136.0
+text = "Crear Sala (Host)"
+
+[node name="BtnUnirse" type="Button" parent="." unique_id=514061011]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 105.0
+offset_right = 408.0
+offset_bottom = 136.0
+text = "Unirse a Sala"
+
+[node name="InputIP" type="LineEdit" parent="." unique_id=711184308]
+layout_mode = 0
+offset_left = 322.0
+offset_top = 183.0
+offset_right = 390.5
+offset_bottom = 214.0
+placeholder_text = "127.0.0.1"
+
+[node name="BtnVolver" type="Button" parent="." unique_id=1743229680]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 303.0
+offset_right = 598.0
+offset_bottom = 334.0
+text = "Volver al Menú"

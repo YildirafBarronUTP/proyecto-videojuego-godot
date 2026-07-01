@@ -55,7 +55,7 @@ text = "Multijugador"
 [node name="Button3" type="Button" parent="VBoxContainer" unique_id=1669201996]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Tutorial"
+text = "Online"
 
 [node name="MusicaMenu" type="AudioStreamPlayer" parent="." unique_id=1843461211]
 stream = ExtResource("2_guvrm")
