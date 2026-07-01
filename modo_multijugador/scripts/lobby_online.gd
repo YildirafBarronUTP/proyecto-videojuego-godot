@@ -8,17 +8,22 @@ func _ready() -> void:
 	btn_empezar.pressed.connect(_on_btn_empezar_pressed)
 	btn_salir.pressed.connect(_on_btn_salir_pressed)
 	
-	# Verificamos el rol de internet de esta ventana para configurar el botón
+	# Configuración de privilegios según el rol de red
 	if multiplayer.is_server():
 		label_estado.text = "Sala activa. Rol: HOST (Servidor). Esperando jugadores..."
-		btn_empezar.disabled = false # El Host puede iniciar la partida
+		btn_empezar.disabled = false
 	else:
 		label_estado.text = "Conectado a la sala. Rol: CLIENTE. Esperando al Host..."
-		btn_empezar.disabled = true # Los clientes tienen el botón apagado
+		btn_empezar.disabled = true
 
 func _on_btn_empezar_pressed() -> void:
-	# [FASE 4] Aquí enviaremos la señal de inicio de juego en red
-	print("El host ha presionado iniciar partida...")
+	# El Host ejecuta la función a través de la red para todas las máquinas conectadas
+	iniciar_partida_red.rpc()
+
+# Definimos el canal de transmisión de red para el cambio de escena
+@rpc("call_local", "any_peer", "reliable")
+func iniciar_partida_red() -> void:
+	get_tree().change_scene_to_file("res://modo_multijugador/scenes/escenario_prueba_online.tscn")
 
 func _on_btn_salir_pressed() -> void:
 	GestorRed.limpiar_red()

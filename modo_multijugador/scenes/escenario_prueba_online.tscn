@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cija02u2m633k"]
+
+[ext_resource type="Script" uid="uid://davaj8dv4qouw" path="res://modo_multijugador/scripts/escenario_prueba_online.gd" id="1_p5oeg"]
+
+[node name="EscenarioPruebaOnline" type="Node2D" unique_id=120711875]
+script = ExtResource("1_p5oeg")
+
+[node name="ContenedorJugadores" type="Node2D" parent="." unique_id=1187018933]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=656376945]
+_spawnable_scenes = PackedStringArray("uid://brllgwdgpxu07", "uid://c1nxvuy7lkpcx")
+spawn_path = NodePath("../ContenedorJugadores")

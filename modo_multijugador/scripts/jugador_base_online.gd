@@ -3,14 +3,21 @@ class_name JugadorBaseOnline
 
 @export var velocidad: float = 400.0
 
-# El ID único de red de Godot asignado a este jugador
 var id_red: int = 1 
-
-# Nodo de animación que tendrán las escenas hijas
 @onready var animador: AnimationPlayer = get_node_or_null("AnimationPlayer")
+
+func _enter_tree() -> void:
+	# MAGIA DE RED 1: Como el Host nombra a este nodo con el ID del jugador,
+	# cada computadora lee el nombre al nacer y se auto-asigna la autoridad correctamente.
+	set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:
 	add_to_group("jugadores_online")
+
+# MAGIA DE RED 2: Esta función viaja por internet. El Host la usa para forzar la posición.
+@rpc("authority", "call_local", "reliable")
+func fijar_posicion_inicial(pos: Vector2) -> void:
+	global_position = pos
 
 func _physics_process(_delta: float) -> void:
 	# === BARRERA DE RED ===
@@ -35,7 +42,6 @@ func _physics_process(_delta: float) -> void:
 	velocity = direccion * velocidad
 	move_and_slide()
 
-# Función para controlar el AnimationPlayer de las escenas hijas
 func _ejecutar_animacion(dir: Vector2) -> void:
 	if animador == null:
 		return
