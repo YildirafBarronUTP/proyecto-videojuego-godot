@@ -1,6 +1,49 @@
 [gd_scene format=3 uid="uid://mu215pr4oo3g"]
 
 [ext_resource type="Script" uid="uid://bprl35lybmv2f" path="res://modo_multijugador/scripts/lobby_online.gd" id="1_jfsi3"]
+[ext_resource type="Texture2D" uid="uid://dfagrke6s8ym" path="res://modo_multijugador/assets/blue-spritesheet.png" id="2_fm5ka"]
+[ext_resource type="Texture2D" uid="uid://c5s2vh1atpqmr" path="res://modo_multijugador/assets/red-spritesheet.png" id="3_6cjsr"]
+[ext_resource type="Texture2D" uid="uid://ckax7ields2vl" path="res://modo_multijugador/assets/purple-spritesheet.png" id="4_npnln"]
+[ext_resource type="Texture2D" uid="uid://dklenbwiim4e0" path="res://modo_multijugador/assets/green-spritesheet.png" id="5_0k842"]
+
+[sub_resource type="Animation" id="Animation_fm5ka"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PreviewPersonaje:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+
+[sub_resource type="Animation" id="Animation_6cjsr"]
+resource_name = "caminar_frente"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PreviewPersonaje:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 22, 23]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_npnln"]
+_data = {
+&"RESET": SubResource("Animation_fm5ka"),
+&"caminar_frente": SubResource("Animation_6cjsr")
+}
 
 [node name="LobbyOnline" type="Control" unique_id=1214057168]
 layout_mode = 3
@@ -8,6 +51,10 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_jfsi3")
+textura_azul = ExtResource("2_fm5ka")
+textura_rojo = ExtResource("3_6cjsr")
+textura_morado = ExtResource("4_npnln")
+textura_verde = ExtResource("5_0k842")
 
 [node name="LabelEstado" type="Label" parent="." unique_id=1729200100]
 layout_mode = 0
@@ -33,3 +80,44 @@ offset_top = 458.0
 offset_right = 858.0
 offset_bottom = 489.0
 text = "Salir de la Sala"
+
+[node name="ContenedorColores" type="HBoxContainer" parent="." unique_id=1798652852]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 89.0
+offset_right = 360.0
+offset_bottom = 129.0
+
+[node name="BtnAzul" type="Button" parent="ContenedorColores" unique_id=28963989]
+layout_mode = 2
+text = "Azul"
+
+[node name="BtnRojo" type="Button" parent="ContenedorColores" unique_id=1797306526]
+layout_mode = 2
+text = "Rojo"
+
+[node name="BtnMorado" type="Button" parent="ContenedorColores" unique_id=711400115]
+layout_mode = 2
+text = "Morado"
+
+[node name="BtnVerde" type="Button" parent="ContenedorColores" unique_id=1672737400]
+layout_mode = 2
+text = "Verde"
+
+[node name="BtnListo" type="Button" parent="." unique_id=2068245740]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 175.0
+offset_right = 335.0
+offset_bottom = 206.0
+text = "Confirmar Personaje"
+
+[node name="PreviewPersonaje" type="Sprite2D" parent="." unique_id=1172284006]
+position = Vector2(566, 268)
+scale = Vector2(3, 3)
+hframes = 8
+vframes = 4
+frame = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=376681544]
+libraries/ = SubResource("AnimationLibrary_npnln")
