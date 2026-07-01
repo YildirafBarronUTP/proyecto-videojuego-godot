@@ -1,13 +1,17 @@
 extends Node2D
 
-@export var escena_p1: PackedScene = preload("res://modo_multijugador/scenes/jugador_1_online.tscn")
-@export var escena_p2: PackedScene = preload("res://modo_multijugador/scenes/jugador_2_online.tscn")
+@export var escena_azul: PackedScene
+@export var escena_rojo: PackedScene
+@export var escena_morado: PackedScene
+@export var escena_verde: PackedScene
 
 @onready var contenedor: Node2D = $ContenedorJugadores
 
 var posiciones: Dictionary = {
-	1: Vector2(300, 400), # P1 (Lado izquierdo)
-	2: Vector2(800, 400)  # P2 (Lado derecho)
+	1: Vector2(300, 200), # Superior Izquierda
+	2: Vector2(800, 200), # Superior Derecha
+	3: Vector2(300, 600), # Inferior Izquierda
+	4: Vector2(800, 600)  # Inferior Derecha
 }
 
 func _ready() -> void:
@@ -15,26 +19,33 @@ func _ready() -> void:
 		generar_jugadores()
 
 func generar_jugadores() -> void:
-	var indice_visual = 1
+	var indice_spawn = 1
 	
 	for peer_id in GestorRed.lista_jugadores.keys():
+		var color_elegido = GestorRed.lista_jugadores[peer_id]["color"]
 		var nuevo_personaje: CharacterBody2D = null
 		
-		if indice_visual == 1:
-			nuevo_personaje = escena_p1.instantiate()
-		else:
-			nuevo_personaje = escena_p2.instantiate()
+		match color_elegido:
+			1: nuevo_personaje = escena_azul.instantiate() if escena_azul else null
+			2: nuevo_personaje = escena_rojo.instantiate() if escena_rojo else null
+			3: nuevo_personaje = escena_morado.instantiate() if escena_morado else null
+			4: nuevo_personaje = escena_verde.instantiate() if escena_verde else null
+			_: 
+				nuevo_personaje = escena_azul.instantiate() if escena_azul else null
+				
+		if nuevo_personaje == null:
+			print("❌ [Arena] Error: Faltan asignar escenas de jugadores en el Inspector.")
+			continue
 			
-		# Le damos el nombre correcto para que el _enter_tree() del paso anterior funcione
 		nuevo_personaje.name = str(peer_id)
 		nuevo_personaje.id_red = peer_id
 		
-		# 1. LO AÑADIMOS PRIMERO AL ÁRBOL (Esto hace que viaje al Cliente instantáneamente)
+		# 1. Metemos el personaje al mundo para que viaje por red
 		contenedor.add_child(nuevo_personaje)
 		
-		# 2. FORZAMOS LA POSICIÓN POR RED (Avisamos a todas las máquinas dónde ponerlo)
-		if posiciones.has(indice_visual):
-			nuevo_personaje.fijar_posicion_inicial.rpc(posiciones[indice_visual])
+		# 2. El Host grita la posición exacta usando el RPC blindado que creamos
+		if posiciones.has(indice_spawn):
+			nuevo_personaje.fijar_posicion_inicial.rpc(posiciones[indice_spawn])
 			
-		print("🌐 [Arena] Personaje instanciado -> NetID: ", peer_id, " | Rol Visual: P", indice_visual)
-		indice_visual += 1
+		print("🌐 [Arena] Spawn -> NetID: ", peer_id, " | Color: ", color_elegido, " | Posición: ", indice_spawn)
+		indice_spawn += 1
