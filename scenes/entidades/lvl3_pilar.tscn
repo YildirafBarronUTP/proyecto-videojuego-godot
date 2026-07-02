@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_854di"]
 size = Vector2(124, 124)
 
-[node name="Lvl3Pilar" type="StaticBody2D" unique_id=242478907 groups=["indestructible"]]
+[node name="Lvl3Pilar" type="StaticBody2D" unique_id=242478907 groups=["indestructible", "pilares"]]
 collision_mask = 0
 script = ExtResource("1_cml8s")
 
