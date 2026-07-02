@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bi5dgai1vlyvx"]
 
 [ext_resource type="Script" uid="uid://b6n1u4nifgpgp" path="res://scripts/nivel_3b.gd" id="1_10gij"]
-[ext_resource type="Script" uid="uid://b6ojk05airxta" path="res://scripts/lvl_3_mapa_procedural.gd" id="2_brryh"]
+[ext_resource type="Script" uid="uid://c8y51v6jcpfl3" path="res://scripts/lvl_final_mapa_procedural.gd" id="2_r2nsw"]
+[ext_resource type="PackedScene" uid="uid://b3f13f2mptoo6" path="res://scenes/entidades/JefeNucleoCentral.tscn" id="3_10gij"]
 [ext_resource type="PackedScene" uid="uid://cms5mtycdiwii" path="res://scenes/entidades/lvl3_muro.tscn" id="3_qbrte"]
 [ext_resource type="PackedScene" uid="uid://5t1h3t4t67ss" path="res://scenes/entidades/lvl3_pilar.tscn" id="4_ymk1y"]
 [ext_resource type="PackedScene" uid="uid://dp33oq5rjfafs" path="res://scenes/entidades/jugador.tscn" id="6_j20kd"]
@@ -51,7 +52,8 @@ _data = {
 script = ExtResource("1_10gij")
 
 [node name="lvl3b_MapaProcedural" type="Node2D" parent="." unique_id=1879343033]
-script = ExtResource("2_brryh")
+script = ExtResource("2_r2nsw")
+escena_jefe = ExtResource("3_10gij")
 escena_muro = ExtResource("3_qbrte")
 escena_pilar = ExtResource("4_ymk1y")
 

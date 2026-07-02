@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://b0c7x8cqndtr5"]
+
+[ext_resource type="Script" uid="uid://b6vs1ev3xlcel" path="res://scenes/entidades/BalaJefe.gd" id="1_pd5kj"]
+[ext_resource type="Texture2D" uid="uid://cnc17bpqo3ulg" path="res://assets/ataque_proyectil.png" id="2_wv3kd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0i3r"]
+atlas = ExtResource("2_wv3kd")
+region = Rect2(0, 0, 682, 682)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1iqy"]
+atlas = ExtResource("2_wv3kd")
+region = Rect2(682, 0, 682, 682)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egfig"]
+atlas = ExtResource("2_wv3kd")
+region = Rect2(1364, 0, 682, 682)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2m1q"]
+atlas = ExtResource("2_wv3kd")
+region = Rect2(0, 682, 682, 682)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjtt0"]
+atlas = ExtResource("2_wv3kd")
+region = Rect2(682, 682, 682, 682)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6sga"]
+atlas = ExtResource("2_wv3kd")
+region = Rect2(1364, 682, 682, 682)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2k6n"]
+atlas = ExtResource("2_wv3kd")
+region = Rect2(0, 1364, 682, 682)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft4uk"]
+atlas = ExtResource("2_wv3kd")
+region = Rect2(682, 1364, 682, 682)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_plrr5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0i3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1iqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egfig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2m1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjtt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6sga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2k6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft4uk")
+}],
+"loop": true,
+"name": &"vuelo",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fvnp"]
+size = Vector2(563.5, 333.5)
+
+[node name="BalaJefe" type="Area2D" unique_id=1089138818]
+z_index = 1
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_pd5kj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=985469092]
+sprite_frames = SubResource("SpriteFrames_plrr5")
+animation = &"vuelo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=149296491]
+position = Vector2(-6.75, -2.75)
+shape = SubResource("RectangleShape2D_0fvnp")

@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://b1p8khl4ggb0q"]
+
+[ext_resource type="Script" uid="uid://dss1hm41gj0i2" path="res://scenes/entidades/CentellaTeledirigida.gd" id="1_sx4b2"]
+[ext_resource type="Texture2D" uid="uid://ghroguggbk1k" path="res://assets/rayo_fulminante_spritesheet_3x2.png" id="2_10wyp"]
+[ext_resource type="Texture2D" uid="uid://jyuk44ywqurl" path="res://assets/mirilla_centella_teledirigida.png" id="3_oxfwb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxfwb"]
+atlas = ExtResource("2_10wyp")
+region = Rect2(0, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4klg"]
+atlas = ExtResource("2_10wyp")
+region = Rect2(160, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyl3c"]
+atlas = ExtResource("2_10wyp")
+region = Rect2(320, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1bi3"]
+atlas = ExtResource("2_10wyp")
+region = Rect2(0, 128, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33ggo"]
+atlas = ExtResource("2_10wyp")
+region = Rect2(160, 128, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knuer"]
+atlas = ExtResource("2_10wyp")
+region = Rect2(320, 128, 160, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2nv0a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxfwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4klg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyl3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1bi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33ggo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knuer")
+}],
+"loop": true,
+"name": &"vuelo",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qya5u"]
+height = 106.66667
+
+[node name="CentellaTeledirigida" type="Area2D" unique_id=114241899]
+z_index = 1
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_sx4b2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1052318194]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_2nv0a")
+animation = &"vuelo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=320051112]
+position = Vector2(0, 5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CapsuleShape2D_qya5u")
+
+[node name="MirillaSprite" type="Sprite2D" parent="." unique_id=952775150]
+scale = Vector2(2, 2)
+texture = ExtResource("3_oxfwb")
