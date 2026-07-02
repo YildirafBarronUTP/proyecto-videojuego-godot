@@ -18,3 +18,9 @@ escena_verde = ExtResource("5_trkpv")
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=656376945]
 _spawnable_scenes = PackedStringArray("uid://brllgwdgpxu07", "uid://c1nxvuy7lkpcx", "uid://c6xg60nyy2rvp", "uid://frdkl6ap5vcu")
 spawn_path = NodePath("../ContenedorJugadores")
+
+[node name="ContenedorEntidades" type="Node2D" parent="." unique_id=1619079281]
+
+[node name="SpawnerEntidades" type="MultiplayerSpawner" parent="." unique_id=32063954]
+_spawnable_scenes = PackedStringArray("uid://t0fwssqgca2i", "uid://2db2hnihpequ")
+spawn_path = NodePath("../ContenedorEntidades")
