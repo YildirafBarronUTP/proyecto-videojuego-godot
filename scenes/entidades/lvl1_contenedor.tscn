@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bxdaqmfv1ept8"]
 
 [ext_resource type="Texture2D" uid="uid://crkq1qvlcieo0" path="res://assets/lvl1_contenedor.png" id="1_ercsf"]
-[ext_resource type="Script" path="res://scripts/lvl_1_contenedor.gd" id="1_vnpni"]
+[ext_resource type="Script" uid="uid://byd4qamk2c8xr" path="res://scripts/lvl_1_contenedor.gd" id="1_vnpni"]
 [ext_resource type="PackedScene" uid="uid://dgrn1gm6o2uxd" path="res://scenes/entidades/bonificacion_rango.tscn" id="2_602oy"]
 [ext_resource type="PackedScene" uid="uid://c7v4hqi46jlv3" path="res://scenes/entidades/bonificacion_velocidad.tscn" id="3_dgqg6"]
 [ext_resource type="PackedScene" uid="uid://bawpj7ylhlebx" path="res://scenes/entidades/bonificacion_cargas.tscn" id="4_k1l8y"]
