@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cms5mtycdiwii" path="res://scenes/entidades/lvl3_muro.tscn" id="3_qbrte"]
 [ext_resource type="PackedScene" uid="uid://5t1h3t4t67ss" path="res://scenes/entidades/lvl3_pilar.tscn" id="4_ymk1y"]
 [ext_resource type="PackedScene" uid="uid://dp33oq5rjfafs" path="res://scenes/entidades/jugador.tscn" id="6_j20kd"]
+[ext_resource type="AudioStream" uid="uid://v4r5khrjlvjx" path="res://sounds/soundtrack/Nivel3b/lvl_final_fondo_musical.mp3" id="7_brryh"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tv6m8"]
 load_path = "res://.godot/imported/lvl3_suelo.png-ea48de3cddf62d4abb0be11411c70b99.ctex"
@@ -76,3 +77,7 @@ speed_scale = 0.466
 
 [node name="Jugador" parent="." unique_id=884006860 instance=ExtResource("6_j20kd")]
 position = Vector2(-320, -570)
+
+[node name="MusicaJefe" type="AudioStreamPlayer2D" parent="." unique_id=767334335]
+stream = ExtResource("7_brryh")
+autoplay = true

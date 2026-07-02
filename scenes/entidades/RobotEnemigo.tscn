@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://okjfi4eq8drw"]
+
+[ext_resource type="Script" uid="uid://bn2rgtpmbib14" path="res://scenes/entidades/RobotEnemigo.gd" id="1_lbeu8"]
+[ext_resource type="Texture2D" uid="uid://pt7hdb2nb3og" path="res://assets/enemigo_lvl_final_movimiento.png" id="2_x46es"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vmsq"]
+atlas = ExtResource("2_x46es")
+region = Rect2(0, 223, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvus3"]
+atlas = ExtResource("2_x46es")
+region = Rect2(237, 223, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlo4d"]
+atlas = ExtResource("2_x46es")
+region = Rect2(474, 223, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj3d7"]
+atlas = ExtResource("2_x46es")
+region = Rect2(711, 223, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avnpd"]
+atlas = ExtResource("2_x46es")
+region = Rect2(0, 0, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5o8v"]
+atlas = ExtResource("2_x46es")
+region = Rect2(237, 0, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lbt8"]
+atlas = ExtResource("2_x46es")
+region = Rect2(474, 0, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5byk0"]
+atlas = ExtResource("2_x46es")
+region = Rect2(711, 0, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sfgn"]
+atlas = ExtResource("2_x46es")
+region = Rect2(0, 446, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbgl7"]
+atlas = ExtResource("2_x46es")
+region = Rect2(237, 446, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnq8c"]
+atlas = ExtResource("2_x46es")
+region = Rect2(474, 446, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywx26"]
+atlas = ExtResource("2_x46es")
+region = Rect2(711, 446, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12yo3"]
+atlas = ExtResource("2_x46es")
+region = Rect2(0, 669, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8hql"]
+atlas = ExtResource("2_x46es")
+region = Rect2(237, 669, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5d08"]
+atlas = ExtResource("2_x46es")
+region = Rect2(474, 669, 237, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0x78u"]
+atlas = ExtResource("2_x46es")
+region = Rect2(711, 669, 237, 223)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f8dbp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vmsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvus3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlo4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj3d7")
+}],
+"loop": true,
+"name": &"caminar_abajo",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avnpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5o8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lbt8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5byk0")
+}],
+"loop": true,
+"name": &"caminar_arriba",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sfgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbgl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnq8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywx26")
+}],
+"loop": true,
+"name": &"caminar_derecha",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12yo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8hql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5d08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0x78u")
+}],
+"loop": true,
+"name": &"caminar_izquierda",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72whi"]
+size = Vector2(161, 187)
+
+[node name="RobotEnemigo" type="CharacterBody2D" unique_id=208054038 groups=["enemigos"]]
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("1_lbeu8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=739798922]
+sprite_frames = SubResource("SpriteFrames_f8dbp")
+animation = &"caminar_derecha"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1576638748]
+position = Vector2(-12.5, -0.5)
+shape = SubResource("RectangleShape2D_72whi")
+
+[node name="LaserRayCast" type="RayCast2D" parent="." unique_id=1071398412]
+target_position = Vector2(0, 90)

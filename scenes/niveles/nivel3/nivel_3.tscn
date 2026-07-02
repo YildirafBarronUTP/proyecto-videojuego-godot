@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://broifwah1kx05" path="res://scripts/nivel_3.gd" id="1_ihd53"]
 [ext_resource type="Script" uid="uid://b6ojk05airxta" path="res://scripts/lvl_3_mapa_procedural.gd" id="2_1dlqh"]
 [ext_resource type="PackedScene" uid="uid://dp33oq5rjfafs" path="res://scenes/entidades/jugador.tscn" id="3_bnovm"]
+[ext_resource type="PackedScene" uid="uid://okjfi4eq8drw" path="res://scenes/entidades/RobotEnemigo.tscn" id="3_cwnuy"]
 [ext_resource type="PackedScene" uid="uid://cms5mtycdiwii" path="res://scenes/entidades/lvl3_muro.tscn" id="3_d84y4"]
 [ext_resource type="PackedScene" uid="uid://5t1h3t4t67ss" path="res://scenes/entidades/lvl3_pilar.tscn" id="3_vbkvg"]
 [ext_resource type="PackedScene" uid="uid://c56h0iq51ik6u" path="res://scenes/entidades/lvl3_contenedor.tscn" id="4_d84y4"]
+[ext_resource type="AudioStream" uid="uid://bi64v11rkdqfo" path="res://sounds/soundtrack/Nivel3/lvl_3_fondo_musical.mp3" id="8_cwnuy"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vbkvg"]
 load_path = "res://.godot/imported/lvl3_suelo.png-ea48de3cddf62d4abb0be11411c70b99.ctex"
@@ -48,11 +50,12 @@ _data = {
 &"animacion_suelo": SubResource("Animation_1dlqh")
 }
 
-[node name="Nivel3" type="Node2D" unique_id=1315280167]
+[node name="Nivel3" type="Node2D" unique_id=1315280167 groups=["jugadores"]]
 script = ExtResource("1_ihd53")
 
 [node name="lvl3_MapaProcedural" type="Node2D" parent="." unique_id=1449272922]
 script = ExtResource("2_1dlqh")
+escena_robot_enemigo = ExtResource("3_cwnuy")
 escena_muro = ExtResource("3_d84y4")
 escena_pilar = ExtResource("3_vbkvg")
 escena_contenedor = ExtResource("4_d84y4")
@@ -76,3 +79,7 @@ speed_scale = 0.466
 
 [node name="Jugador" parent="." unique_id=884006860 instance=ExtResource("3_bnovm")]
 position = Vector2(-320, -570)
+
+[node name="MusicaFondo" type="AudioStreamPlayer2D" parent="." unique_id=1925444786]
+stream = ExtResource("8_cwnuy")
+autoplay = true
