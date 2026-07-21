@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq6rw6o2omqm2"
-path="res://.godot/imported/jefe1_ataque.png-5957b3bc731488b84ec220b250d8ec41.ctex"
+uid="uid://c8wyf8d2ndp6w"
+path="res://.godot/imported/maus_explotion.png-b54358324c199c9f8ffe79498bc9981c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/jefe1_ataque.png"
-dest_files=["res://.godot/imported/jefe1_ataque.png-5957b3bc731488b84ec220b250d8ec41.ctex"]
+source_file="res://assets/ui/maus_explotion.png"
+dest_files=["res://.godot/imported/maus_explotion.png-b54358324c199c9f8ffe79498bc9981c.ctex"]
 
 [params]
 

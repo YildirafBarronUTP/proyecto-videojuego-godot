@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://ct3ql3ftsmd7c"]
 
 [ext_resource type="Script" uid="uid://chh2mv2paga57" path="res://scripts/lobby.gd" id="1_6oakf"]
+[ext_resource type="VideoStream" uid="uid://bsy5ght0irhmq" path="res://videos/multijugador_bg.ogv" id="2_2rbxb"]
+[ext_resource type="AudioStream" uid="uid://bx0m0okvbrle5" path="res://sounds/sound effects/maus_bomb_sound.wav" id="2_efll3"]
+[ext_resource type="AudioStream" uid="uid://wm17y6ex1men" path="res://sounds/sound effects/maus_mecha.wav" id="3_5t5el"]
 
 [node name="Lobby" type="Control" unique_id=1102504621]
 layout_mode = 3
@@ -11,6 +14,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6oakf")
 
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1185609139]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.99700004
+offset_left = -1.0
+offset_top = -2.5
+offset_right = 2.0
+offset_bottom = -0.34002686
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stream = ExtResource("2_2rbxb")
+autoplay = true
+expand = true
+loop = true
+
 [node name="Panel" type="Panel" parent="." unique_id=337193739]
 layout_mode = 0
 offset_left = 256.0
@@ -20,42 +40,49 @@ offset_bottom = 512.0
 
 [node name="BtnP1" type="Button" parent="Panel" unique_id=908121865]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 93.0
-offset_right = 210.0
-offset_bottom = 124.0
+offset_left = 94.0
+offset_top = 76.0
+offset_right = 226.0
+offset_bottom = 141.0
 text = "Jugador 1"
 
 [node name="BtnP2" type="Button" parent="Panel" unique_id=769765950]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 93.0
-offset_right = 466.0
-offset_bottom = 124.0
+offset_left = 355.0
+offset_top = 77.0
+offset_right = 485.0
+offset_bottom = 142.0
 text = "Jugador 2"
 
 [node name="BtnP3" type="Button" parent="Panel" unique_id=789670173]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 190.0
-offset_right = 210.0
-offset_bottom = 221.0
+offset_left = 98.0
+offset_top = 176.0
+offset_right = 230.0
+offset_bottom = 242.0
 text = "Jugador 3"
 
 [node name="BtnP4" type="Button" parent="Panel" unique_id=961236520]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 190.0
-offset_right = 466.0
-offset_bottom = 221.0
+offset_left = 357.0
+offset_top = 176.0
+offset_right = 483.0
+offset_bottom = 242.0
 text = "Jugador 4"
 
 [node name="BtnIniciar" type="Button" parent="Panel" unique_id=706720774]
 layout_mode = 0
-offset_left = 256.0
-offset_top = 256.0
-offset_right = 305.0
-offset_bottom = 287.0
+offset_left = 225.0
+offset_top = 291.0
+offset_right = 352.0
+offset_bottom = 347.0
 text = "Jugar"
+
+[node name="SonidoClick" type="AudioStreamPlayer" parent="." unique_id=1032292226]
+stream = ExtResource("2_efll3")
+
+[node name="SonidoHover" type="AudioStreamPlayer" parent="." unique_id=851125381]
+stream = ExtResource("3_5t5el")
+volume_db = -5.0
 
 [connection signal="pressed" from="Panel/BtnIniciar" to="." method="_on_btn_iniciar_partida_pressed"]

@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://et3jig5ygs2m" path="res://scripts/menu_principal.gd" id="1_tu06j"]
 [ext_resource type="Texture2D" uid="uid://ba6f1ncokuo0o" path="res://assets/ui/fondo_menu.png" id="2_fh6ra"]
 [ext_resource type="AudioStream" uid="uid://c447on0rr7bl4" path="res://sounds/soundtrack/Menu_principal/Jerry Five.mp3" id="2_guvrm"]
+[ext_resource type="AudioStream" uid="uid://bx0m0okvbrle5" path="res://sounds/sound effects/maus_bomb_sound.wav" id="4_g2cyh"]
+[ext_resource type="AudioStream" uid="uid://wm17y6ex1men" path="res://sounds/sound effects/maus_mecha.wav" id="5_3exxb"]
 
 [node name="MenuPrincipal" type="Control" unique_id=599557749]
 layout_mode = 3
@@ -35,31 +37,42 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -142.0
+offset_top = -102.0
+offset_right = 130.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 12
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=1659441444]
 layout_mode = 2
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 30
 text = "Solo un jugador"
 
 [node name="Button2" type="Button" parent="VBoxContainer" unique_id=538129165]
 layout_mode = 2
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 30
 text = "Multijugador"
 
 [node name="Button3" type="Button" parent="VBoxContainer" unique_id=1669201996]
 layout_mode = 2
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 30
 text = "Online"
 
 [node name="MusicaMenu" type="AudioStreamPlayer" parent="." unique_id=1843461211]
 stream = ExtResource("2_guvrm")
 autoplay = true
+
+[node name="SonidoClick" type="AudioStreamPlayer" parent="." unique_id=1652381923]
+stream = ExtResource("4_g2cyh")
+
+[node name="SonidoHover" type="AudioStreamPlayer" parent="." unique_id=536004003]
+stream = ExtResource("5_3exxb")
+volume_db = -5.0
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

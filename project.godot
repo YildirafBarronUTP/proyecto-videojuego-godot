@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Voltio Online"
-run/main_scene="uid://bq0de2hep0qa7"
+run/main_scene="uid://5b0c4rs3ieky"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,8 @@ GestorRed="*uid://cdd6sy07icg6a"
 [display]
 
 window/size/viewport_height=720
+mouse_cursor/custom_image="uid://dbw5ausv08dvh"
+mouse_cursor/custom_image_hotspot=Vector2(32, 32)
 
 [input]
 

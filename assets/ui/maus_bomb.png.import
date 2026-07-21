@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnnujinbfcm4t"
-path="res://.godot/imported/jefe1.png-5f52d3df91d58c096b1a19f95fd2f325.ctex"
+uid="uid://dbw5ausv08dvh"
+path="res://.godot/imported/maus_bomb.png-e94294ab91bde71e68f3adf8c8b84b45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/jefe1.png"
-dest_files=["res://.godot/imported/jefe1.png-5f52d3df91d58c096b1a19f95fd2f325.ctex"]
+source_file="res://assets/ui/maus_bomb.png"
+dest_files=["res://.godot/imported/maus_bomb.png-e94294ab91bde71e68f3adf8c8b84b45.ctex"]
 
 [params]
 

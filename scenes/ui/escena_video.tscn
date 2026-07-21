@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://5b0c4rs3ieky"]
+
+[ext_resource type="VideoStream" uid="uid://dokyfba1ogqar" path="res://videos/video_inicio.ogv" id="1_nminn"]
+[ext_resource type="Script" uid="uid://c0aun0fm7pq4h" path="res://scripts/video_inicio.gd" id="2_7gom1"]
+
+[node name="EscenaVideo" type="Node" unique_id=1583077850]
+
+[node name="VideoInicio" type="VideoStreamPlayer" parent="." unique_id=1389491519]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2.0
+stream = ExtResource("1_nminn")
+autoplay = true
+expand = true
+script = ExtResource("2_7gom1")
