@@ -208,35 +208,33 @@ func morir_y_verificar_victoria() -> void:
 	print("Robots cazadores restantes en el mapa: ", robots_restantes.size())
 	
 	if robots_restantes.is_empty():
-		# ¡Es el último robot! Desencadenamos la victoria
+		# ¡Es el último robot! Mostramos el mensaje de victoria
 		mostrar_mensaje_victoria()
 	else:
-		# Aún quedan otros robots vivos
+		# Aún quedan otros robots vivos en la partida
 		queue_free()
 
-# --- VICTORIA CINEMATOGRÁFICA (Estructura de BossAlfil) ---
+# --- VICTORIA CINEMATOGRÁFICA ---
 func mostrar_mensaje_victoria() -> void:
 	if get_tree() == null or get_parent() == null: return
 	
 	set_physics_process(false)
-	hide() 
+	hide() # Ocultamos el sprite del robot
 	
-	# Detener música de fondo del Nivel 3
+	# 1. Detener la música de fondo del Nivel 3
 	for nodo in get_parent().get_children():
 		if (nodo is AudioStreamPlayer or nodo is AudioStreamPlayer2D) and nodo.playing:
 			nodo.stop()
 			
-	# Reproducción de audio de victoria
+	# 2. Reproducción de audio de victoria
 	var cancion_victoria = load("res://sounds/soundtrack/Nivel2/ganar.wav")
 	if cancion_victoria != null:
 		var audio_victoria = AudioStreamPlayer.new()
 		audio_victoria.stream = cancion_victoria
 		get_parent().add_child(audio_victoria)
 		audio_victoria.play()
-	else:
-		print("¡Ojo! Falta tu archivo ganar.wav, avanzando en silencio...")
 	
-	# Interfaz de pantalla de victoria
+	# 3. Interfaz de pantalla de victoria
 	var canvas = CanvasLayer.new()
 	get_tree().root.add_child(canvas)
 	
@@ -253,11 +251,22 @@ func mostrar_mensaje_victoria() -> void:
 	texto.add_theme_font_size_override("font_size", 45) 
 	canvas.add_child(texto)
 	
-	if get_tree() == null: return
+	# 4. Esperar 4 segundos mostrando el aviso
 	await get_tree().create_timer(4.0).timeout
 	
 	if get_tree() != null:
-		# Cambia a la escena del Jefe Final (Nivel 3b)
-		get_tree().change_scene_to_file("res://scenes/niveles/nivel3/nivel_3b.tscn")
+		# 5. BÚSQUEDA INTELIGENTE DE RUTA (Evita bloqueos)
+		var ruta_siguiente_nivel = "res://niveles/nivel3/nivel_3b.tscn"
+		
+		if not ResourceLoader.exists(ruta_siguiente_nivel):
+			if ResourceLoader.exists("res://scenes/niveles/nivel3/nivel_3b.tscn"):
+				ruta_siguiente_nivel = "res://scenes/niveles/nivel3/nivel_3b.tscn"
+			elif ResourceLoader.exists("res://scenes/niveles/nivel_3b.tscn"):
+				ruta_siguiente_nivel = "res://scenes/niveles/nivel_3b.tscn"
+				
+		print("Cargando siguiente nivel en: ", ruta_siguiente_nivel)
+		get_tree().change_scene_to_file(ruta_siguiente_nivel)
+		
+		# Limpiamos el texto y el nodo del robot
 		canvas.queue_free()
 		queue_free()

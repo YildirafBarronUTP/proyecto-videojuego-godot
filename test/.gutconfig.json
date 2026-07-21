@@ -1,0 +1,6 @@
+{
+	"dirs": [
+		"res://test/functional/"
+	],
+	"prefix": "test_"
+}

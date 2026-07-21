@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dnlycf1xlm2pf" path="res://scripts/lvl_3_contenedor.gd" id="1_ky73o"]
 [ext_resource type="Texture2D" uid="uid://bh55fm7bfgk53" path="res://assets/lvl3_contenedor.png" id="2_0w5cs"]
+[ext_resource type="PackedScene" uid="uid://dgrn1gm6o2uxd" path="res://scenes/entidades/bonificacion_rango.tscn" id="2_7bh7x"]
 [ext_resource type="AudioStream" uid="uid://cnaa3tnto0pl1" path="res://sounds/sound effects/Contenedor_destruido2.wav" id="2_er6f1"]
+[ext_resource type="PackedScene" uid="uid://c7v4hqi46jlv3" path="res://scenes/entidades/bonificacion_velocidad.tscn" id="3_o6has"]
+[ext_resource type="PackedScene" uid="uid://bawpj7ylhlebx" path="res://scenes/entidades/bonificacion_cargas.tscn" id="4_50ehj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w5cs"]
 size = Vector2(126, 126)
@@ -11,6 +14,9 @@ size = Vector2(126, 126)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_ky73o")
+escena_rango = ExtResource("2_7bh7x")
+escena_velocidad = ExtResource("3_o6has")
+escena_cargas = ExtResource("4_50ehj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=632472482]
 texture = ExtResource("2_0w5cs")
