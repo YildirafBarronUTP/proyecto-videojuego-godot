@@ -73,6 +73,7 @@ size = Vector2(563.5, 333.5)
 [node name="BalaJefe" type="Area2D" unique_id=1089138818]
 z_index = 1
 scale = Vector2(0.2, 0.2)
+collision_mask = 5
 script = ExtResource("1_pd5kj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=985469092]

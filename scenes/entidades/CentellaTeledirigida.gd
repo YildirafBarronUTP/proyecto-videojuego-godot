@@ -8,6 +8,7 @@ extends Area2D
 @export var velocidad_caida : float = 2800.0   # Velocidad extrema para el efecto de impacto fulminante
 
 var fase_caida : bool = false
+var ya_hizo_dano : bool = false # Evita aplicar doble daño en el mismo fotograma
 
 func _ready() -> void:
 	# Fase 1: La mirilla advierte en el suelo, el rayo se mantiene oculto
@@ -36,7 +37,8 @@ func iniciar_secuencia_alerta() -> void:
 	# Colocamos el rayo arriba en el cielo (fuera de pantalla)
 	sprite.position.y = -800.0
 	sprite.visible = true
-	sprite.play("vuelo")
+	if sprite.sprite_frames and sprite.sprite_frames.has_animation("vuelo"):
+		sprite.play("vuelo")
 	
 	fase_caida = true
 
@@ -49,15 +51,27 @@ func _physics_process(delta: float) -> void:
 			fase_caida = false
 			sprite.position.y = 0 
 			
-			# Encendemos la colisión en el suelo un breve instante
+			# Encendemos la colisión en el suelo
 			collision.position.y = 0
 			collision.disabled = false
 			
 			print("¡EL TRUENO HA IMPACTADO LA CASILLA!")
+			
+			# CORRECCIÓN: Escaneamos de inmediato por si Voltio estaba quieto debajo
+			verificar_impacto_estatico()
+			
 			await get_tree().create_timer(0.12).timeout
 			queue_free()
 
+func verificar_impacto_estatico() -> void:
+	var cuerpos_solapados = get_overlapping_bodies()
+	for body in cuerpos_solapados:
+		_on_body_entered(body)
+
 func _on_body_entered(body: Node) -> void:
+	if ya_hizo_dano: return
+	
 	if (body.is_in_group("jugadores") or body.is_in_group("jugador")) and body.has_method("recibir_dano"):
-		body.recibir_dano(1)
+		ya_hizo_dano = true
+		body.recibir_dano() # 👈 Cambiado: Se quita el (1)
 		print("¡Voltio fue fulminado por el rayo vertical!")

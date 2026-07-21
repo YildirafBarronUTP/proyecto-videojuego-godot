@@ -60,6 +60,7 @@ height = 106.66667
 [node name="CentellaTeledirigida" type="Area2D" unique_id=114241899]
 z_index = 1
 scale = Vector2(0.2, 0.2)
+collision_mask = 5
 script = ExtResource("1_sx4b2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1052318194]
