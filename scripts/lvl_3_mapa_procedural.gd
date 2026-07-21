@@ -61,7 +61,7 @@ func spawnear_robots_en_esquinas_reales() -> void:
 		robot.position = pos_esquina
 		
 		# Escala ideal para que quepa perfectamente y se mueva sin atascos por los pasillos
-		robot.scale = Vector2(0.45, 0.45)
+		robot.scale = Vector2(0.65, 0.65) # Tamaño aumentado a 0.7
 		
 	print("Mapa 3: Los 3 robots cazadores han sido desplegados en sus respectivas esquinas reales.")
 
